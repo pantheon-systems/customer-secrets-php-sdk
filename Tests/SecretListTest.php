@@ -25,11 +25,11 @@ class SecretListTest extends TestCase
         $this->fixtures->setHomeDirectory();
     }
 
-  /**
-   * @test
-   * @return void
-   * @throws \Exception
-   */
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     */
     public function testSecretListInst()
     {
         $siteID = Uuid::createUUID();
