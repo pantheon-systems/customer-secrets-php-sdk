@@ -1,0 +1,34 @@
+{
+    "name": "pantheon-systems/customer-secrets-php-sdk",
+    "description": "Supporting libraries for customer secrets project",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PantheonSystems\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom Stovall",
+            "email": "119924+stovak@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "composer/composer": "^2.4",
+        "drupal/coder": "^8.3",
+        "kint-php/kint": "@stable",
+        "phpunit/phpunit": "^9",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/yaml": "^5",
+        "yoast/phpunit-polyfills": "^1.0",
+        "ramsey/uuid": "^4.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

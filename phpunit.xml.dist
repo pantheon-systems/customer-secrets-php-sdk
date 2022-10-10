@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutChangesToGlobalState="true"
+         convertDeprecationsToExceptions="true"
+         processIsolation="true"
+         backupGlobals="false"
+         colors="true"
+         verbose="true"
+         bootstrap="./src/bootstrap.php"
+        >
+    <testsuites>
+        <testsuite name="php-prepend-includes">
+            <directory>./src/Pantheon/Internal/Tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
