@@ -1,12 +1,10 @@
 <?php
 
-namespace Pantheon\Internal\Tests;
+namespace PantheonSystems\Tests;
 
-use Pantheon\Internal\CustomerSecrets\Secret;
-use Pantheon\Internal\CustomerSecrets\SecretList;
-use Pantheon\Internal\CustomerSecrets\SecretListMetadata;
-use Pantheon\Internal\Fixtures;
-use Pantheon\Internal\Utility\Uuid;
+use PantheonSystems\CustomerSecrets\SecretList;
+use PantheonSystems\Internal\Utility\Fixtures;
+use PantheonSystems\Internal\Utility\Uuid;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -27,26 +25,26 @@ class SecretListTest extends TestCase
         $this->fixtures->setHomeDirectory();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+  /**
+   * @test
+   * @return void
+   * @throws \Exception
+   */
     public function testSecretListInst()
     {
         $siteID = Uuid::createUUID();
         $value1 = uniqid('value');
         $value2 = uniqid('value');
-        $metaData = SecretList::secretListMetadata();
         $secretList = new SecretList(
             $siteID,
             [
                 "value1" => $value1,
                 "value2" => $value2,
             ],
-            $metaData,
         );
-        $this->assertEquals($siteID, $secretList->SiteId, "Site ID should be set");
-        $secrets = $secretList->Secrets;
+        $secretList->secretListMetadata();
+        $this->assertEquals($siteID, $secretList->siteId, "Site ID should be set");
+        $secrets = $secretList->secrets;
         $this->assertIsArray($secrets, "Secret Values should be an array.");
         $this->assertEquals(2, count($secrets), "There should be 2 stored secrets.");
         $this->assertArrayHasKey("value1", $secrets, "Values should have value1 key");

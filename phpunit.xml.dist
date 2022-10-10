@@ -10,11 +10,11 @@
          backupGlobals="false"
          colors="true"
          verbose="true"
-         bootstrap="./src/bootstrap.php"
+         bootstrap="./Tests/bootstrap.php"
         >
     <testsuites>
-        <testsuite name="php-prepend-includes">
-            <directory>./src/Pantheon/Internal/Tests</directory>
+        <testsuite name="customer-secrets-php-sdk">
+            <directory>./Tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
