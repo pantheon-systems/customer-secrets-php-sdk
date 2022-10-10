@@ -1,6 +1,6 @@
 <?php
 
-namespace Pantheon\Internal\CustomerSecrets;
+namespace PantheonSystems\CustomerSecrets;
 
 /**
  * Secret List Object.
@@ -34,22 +34,6 @@ class SecretList
     }
 
     /**
-     * Retrieves/Generates metatadata about the secret list.
-     *
-     * @param array $values
-     *
-     * @return array
-     * @throws \Exception
-     */
-    public static function create(): ?static
-    {
-        try {
-            [$ch, $opts] = pantheon_curl_setup(self::CUSTOMER_SECRETS_API);
-            // Grab URL and pass it to the browser.
-
-    }
-
-    /**
      * Fetches secret data for current site.
      *
      * @throws \JsonException
@@ -72,6 +56,32 @@ class SecretList
     }
 
     /**
+     * Retrieves/Generates metatadata about the secret list.
+     *
+     * @param array $values
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function secretListMetadata(array $values = []): array {
+        $created = new \DateTime('now');
+        if (isset($values['CreatedTime']) && is_string($values['CreatedTime'])) {
+            $created = new \DateTime(strtotime($values['CreatedTime']));
+        }
+        if (isset($values['CreatedTime']) && $values['CreatedTime'] instanceof \DateTime) {
+            $created = $values['CreatedTime'];
+        }
+        $version = $values['Version'] ?? 0;
+        unset($values['CreatedTime'], $values['Version']);
+        return [
+            $created,
+            $version,
+            $values,
+        ];
+
+    }
+
+    /**
      * Return secret data, retrieving if necessary.
      *
      * @param bool $refresh
@@ -87,7 +97,7 @@ class SecretList
             // If the fetch fails, throw an exception and fail.
             try {
                 $this->fetchSecretData();
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 error_log(sprintf("Error of some sort getting secret list: %s", $e->getMessage()));
                 return null;
             }

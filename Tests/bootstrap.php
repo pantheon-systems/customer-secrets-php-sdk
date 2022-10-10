@@ -17,12 +17,3 @@ function bootstrapDotenv()
     bootstrapInclude('Dotenv.php');
 }
 
-function bootstrapPantheonPrepend()
-{
-    bootstrapInclude('pantheon.php');
-}
-
-function bootstrapHeathcheck()
-{
-    bootstrapInclude('pantheon_healthcheck.php');
-}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pantheon\Internal\CustomerSecrets;
+namespace PantheonSystems\CustomerSecrets;
 
 /**
  * Secret Data Object.
@@ -20,9 +20,9 @@ class Secret
     }
 
   /**
-   * @param $values
+   * @param array $values
    *
-   * @return \Pantheon\Internal\CustomerSecrets\Secret
+   * @return \PantheonSystems\CustomerSecrets\Secret
    */
     public static function create(array $values): static
     {

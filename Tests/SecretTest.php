@@ -1,9 +1,9 @@
 <?php
 
-namespace Pantheon\Internal\Tests;
+namespace PantheonSystems\Tests;
 
-use Pantheon\Internal\CustomerSecrets\Secret;
-use Pantheon\Internal\Fixtures;
+use PantheonSystems\CustomerSecrets\Secret;
+use PantheonSystems\Internal\Utility\Fixtures;
 use PHPUnit\Framework\TestCase;
 
 /**
