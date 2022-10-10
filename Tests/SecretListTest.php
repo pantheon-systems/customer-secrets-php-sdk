@@ -17,7 +17,6 @@ class SecretListTest extends TestCase
      */
     protected function setUp(): void
     {
-        bootstrapPantheonPrepend();
         $this->fixtures = new Fixtures();
         // Env vars.
         $this->fixtures->definePantheonEnvVarFixtures();
