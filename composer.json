@@ -34,7 +34,14 @@
     "scripts": {
         "test": [
             "@lint",
+            "@unit",
+            "@validate"
+        ],
+        "unit": [
             "phpunit"
+        ],
+        "validate": [
+            "composer validate --strict"
         ],
         "lint": [
             "phpcs --standard=psr12 src Tests/*"
