@@ -114,7 +114,7 @@ class Fixtures
             $db_host = 'localhost';
         }
 
-        $_SERVER['PRESSFLOW_SETTINGS'] = '{"conf":{"pressflow_smart_start":true,"pantheon_binding":"xyzzy","pantheon_site_uuid":"12345678-1234-1234-1234-12345678901234","pantheon_environment":"dev","pantheon_tier":"live","pantheon_index_host":null,"pantheon_index_port":449,"redis_client_host":"127.0.0.1","redis_client_port":13214,"redis_client_password":"xyzzy","file_public_path":"sites/default/files","file_private_path":"sites/default/files/private","file_directory_path":"sites/default/files","file_temporary_path":"/tmp","file_directory_temp":"/tmp","css_gzip_compression":false,"js_gzip_compression":false,"page_compression":false},"databases":{"default":{"default":{"host":"' . $db_host . '","port":"6033","username":"root","password":"","database":"pantheon","driver":"mysql"}}},"drupal_hash_salt":"xyzzy","config_directory_name":"config"}';
+        $_SERVER['PRESSFLOW_SETTINGS'] = file_get_contents($this->rootDir . "/Tests/pressflow_settings.json");
 
         $_ENV['DB_HOST'] = 'dbhost';
         $_ENV['DB_PORT'] = '6033';
@@ -133,7 +133,7 @@ class Fixtures
         $base = $this->fixturesDir() . '/drupal/src/';
         spl_autoload_register(
             function ($className) use ($base) {
-                if (class_exists($className) || (substr($className, 0, 7) != 'Drupal\\')) {
+                if (class_exists($className) || (!str_starts_with($className, 'Drupal\\'))) {
                     return;
                 }
                 $classFilePath = $base . strtr(substr($className, 7), '\\', '/') . '.php';

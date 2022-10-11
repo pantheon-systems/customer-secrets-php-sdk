@@ -30,5 +30,17 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
+    },
+    "scripts": {
+        "test": [
+            "@lint",
+            "phpunit"
+        ],
+        "lint": [
+            "phpcs --standard=psr12 src Tests/*"
+        ],
+        "fix": [
+            "phpcbf --standard=psr12 src Tests/*"
+        ]
     }
 }

@@ -10,7 +10,7 @@ class SecretList
     /**
      * Static value of customer secrets API.
      */
-    const CUSTOMER_SECRETS_API = "https://customer-secrets:443";
+    public const CUSTOMER_SECRETS_API = "https://customer-secrets:443";
 
     /**
      * @param string $siteId
@@ -39,7 +39,8 @@ class SecretList
      * @throws \JsonException
      * @throws \Exception
      */
-    protected function fetchSecretData() {
+    protected function fetchSecretData()
+    {
         [$ch, $opts] = pantheon_curl_setup(self::CUSTOMER_SECRETS_API);
         // Grab URL and pass it to the browser.
 
@@ -63,7 +64,8 @@ class SecretList
      * @return array
      * @throws \Exception
      */
-    public function secretListMetadata(array $values = []): array {
+    public function secretListMetadata(array $values = []): array
+    {
         $created = new \DateTime('now');
         if (isset($values['CreatedTime']) && is_string($values['CreatedTime'])) {
             $created = new \DateTime(strtotime($values['CreatedTime']));
@@ -78,7 +80,6 @@ class SecretList
             $version,
             $values,
         ];
-
     }
 
     /**
@@ -89,7 +90,8 @@ class SecretList
      * @return array|null
      * @throws \JsonException
      */
-    public function get(bool $refresh = false): ?array {
+    public function get(bool $refresh = false): ?array
+    {
         // If this is the first time that secret data has been requested, fetch.
         // Fetch only occurs if manually triggered or on first run to provide
         // a way to retrieve data without needing to query the server again.
