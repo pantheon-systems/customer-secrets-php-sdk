@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "PantheonSystems\\": "src/"
+            "PantheonSystems\\CustomerSecrets": "src/"
         }
     },
     "authors": [
@@ -17,14 +17,10 @@
     "minimum-stability": "dev",
     "require": {},
     "require-dev": {
-        "composer/composer": "^2.4",
-        "drupal/coder": "^8.3",
-        "kint-php/kint": "@stable",
         "phpunit/phpunit": "^9",
         "squizlabs/php_codesniffer": "^3.6",
         "symfony/yaml": "^5",
         "yoast/phpunit-polyfills": "^1.0",
-        "ramsey/uuid": "^4.5"
     },
     "config": {
         "allow-plugins": {
