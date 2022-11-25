@@ -17,9 +17,9 @@ class CustomerSecretsClient implements CustomerSecretsClientInterface
     /**
      * Secrets internal client.
      *
-     * @var \Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface
+     * @var object internal client
      */
-    protected CustomerSecretsClientInterface $internalClient;
+    protected $internalClient;
 
     /**
      * CustomerSecretsClient constructor.
