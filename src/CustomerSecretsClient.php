@@ -27,7 +27,7 @@ class CustomerSecretsClient implements CustomerSecretsClientInterface
     public function __construct()
     {
         $this->internalClient = InternalClient::create(['version' => '1']);
-        $this->secretList = null;
+        $this->secretList = new SecretList();
     }
 
     /**
@@ -68,7 +68,7 @@ class CustomerSecretsClient implements CustomerSecretsClientInterface
      */
     public function getSecrets(bool $refresh = false): array
     {
-        if ($refresh || empty($this->secretList)) {
+        if ($refresh || empty($this->secretList->getMetadata())) {
             $this->fetchSecrets();
         }
         return $this->secretList->getSecrets();
