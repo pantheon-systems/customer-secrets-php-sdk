@@ -26,7 +26,7 @@ class CustomerSecretsClient implements CustomerSecretsClientInterface
      */
     public function __construct()
     {
-        $this->internalClient = InternalClient::create(['version' => 1]);
+        $this->internalClient = InternalClient::create(['version' => '1']);
     }
 
     /**
