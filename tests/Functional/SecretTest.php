@@ -12,8 +12,7 @@ use PHPUnit\Framework\TestCase;
 class SecretTest extends TestCase
 {
     /**
-     * @short
-     * @return void
+     * @group short
      */
     public function testBasicSecretFunctions()
     {
