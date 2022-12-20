@@ -31,7 +31,7 @@ class SecretTest extends TestCase
         $this->assertEquals(2, count($secret->getScopes()), "There should be only two scopes.");
 
         $secret->addScope('web');
-        $this->assertEquals(4, count($secret->getScopes()), "There should be exactly three scopes.");
+        $this->assertEquals(3, count($secret->getScopes()), "There should be exactly three scopes.");
 
     }
 }
