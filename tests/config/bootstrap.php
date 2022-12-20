@@ -7,7 +7,7 @@
 define("BOOTSTRAP_ROOT_DIR", realpath(__DIR__ . '/..'));
 define("BOOTSTRAP_CODE_PATH", BOOTSTRAP_ROOT_DIR. '/src');
 
-require_once BOOTSTRAP_ROOT_DIR . "/vendor/autoload.php";
+require_once BOOTSTRAP_ROOT_DIR . "/../vendor/autoload.php";
 
 function bootstrapInclude($file)
 {

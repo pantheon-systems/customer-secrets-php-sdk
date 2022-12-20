@@ -1,6 +1,6 @@
 <?php
 
-namespace PantheonSystems\Tests;
+namespace PantheonSystems\Tests\Functional;
 
 use PantheonSystems\CustomerSecrets\SecretList;
 use PantheonSystems\Internal\Utility\Fixtures;
@@ -25,7 +25,7 @@ class SecretListTest extends TestCase
     }
 
     /**
-     * @test
+     * @short
      * @return void
      * @throws \Exception
      */

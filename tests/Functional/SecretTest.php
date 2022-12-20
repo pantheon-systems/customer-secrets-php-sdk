@@ -1,6 +1,6 @@
 <?php
 
-namespace PantheonSystems\Tests;
+namespace PantheonSystems\Tests\Functional;
 
 use PantheonSystems\CustomerSecrets\Secret;
 use PantheonSystems\Internal\Utility\Fixtures;
@@ -24,7 +24,7 @@ class SecretTest extends TestCase
     }
 
     /**
-     * @test
+     * @long
      * @return void
      */
     public function testBasicSecretFunctions()
