@@ -52,12 +52,12 @@ class CustomerSecretsClient implements CustomerSecretsClientInterface
      * @return array
      * @throws \Exception
      */
-    protected function secretListMetadata(array $values = []): array {
+    protected function secretListMetadata(array $values = []): array
+    {
         if (isset($values['Secrets'])) {
             unset($values['Secrets']);
         }
         return $values;
-
     }
 
     /**

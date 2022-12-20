@@ -2,7 +2,8 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
-class CustomerSecrets {
+class CustomerSecrets
+{
 
     protected $client;
     
@@ -30,5 +31,4 @@ class CustomerSecrets {
     {
         return (new CustomerSecrets())->getClient();
     }
-
 }

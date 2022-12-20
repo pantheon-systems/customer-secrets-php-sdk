@@ -1,5 +1,7 @@
 <?php
 
+// @codingStandardsIgnoreFile
+
 namespace PantheonSystems\Internal\Utility;
 
 use Symfony\Component\Filesystem\Filesystem;

@@ -1,5 +1,7 @@
 <?php
 
+namespace PantheonSystems\CustomerSecrets;
+
 class CustomerSecretsNotImplemented extends \Exception
 {
     /**

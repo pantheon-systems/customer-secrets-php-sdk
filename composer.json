@@ -26,5 +26,10 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
+    },
+    "scripts": {
+        "cs": [
+            "vendor/bin/phpcs --standard=PSR2 src Tests"
+        ]
     }
 }

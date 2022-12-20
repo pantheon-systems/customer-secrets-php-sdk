@@ -1,5 +1,7 @@
 <?php
 
+// @codingStandardsIgnoreFile
+
 // If this file moves, please change this location to point to
 // the composer.json file's directory
 define("BOOTSTRAP_ROOT_DIR", realpath(__DIR__ . '/..'));
