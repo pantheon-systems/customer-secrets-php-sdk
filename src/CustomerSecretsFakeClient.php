@@ -2,53 +2,42 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
-class CustomerSecretsFakeClient implements CustomerSecretsClientInterface
+class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements CustomerSecretsClientInterface
 {
-
     /**
-     * Secret list.
+     * File to store the fake secrets.
      *
-     * @var \PantheonSystems\CustomerSecrets\SecretList
+     * @var string
      */
-    protected SecretList $secretList;
+    protected string $file;
 
     /**
      * CustomerSecretsClient constructor.
      */
-    public function __construct()
+    public function __construct(array $args = ['file' => '/tmp/secrets.json'])
     {
-        $this->secretList = new SecretList();
+        parent::__construct();
+        if (empty($args['file'])) {
+            $args['file'] = '/tmp/secrets.json';
+        }
+        $this->file = $args['file'];
     }
 
-    /**
-     * Get all secrets for current site.
+        /**
+     * Fetches secret data for current site.
      */
-    public function getSecrets(): array
+    protected function fetchSecrets(): void
     {
-        return [];
-    }
-
-    /**
-     * Get a specific secret for current site.
-     */
-    public function getSecret(string $secretName): Secret
-    {
-        return null;
-    }
-
-    /**
-     * Create a new secret for current site.
-     */
-    public function setSecret(Secret $secret): void
-    {
-        throw new CustomerSecretsNotImplemented();
-    }
-
-    /**
-     * Delete a secret for current site.
-     */
-    public function deleteSecret(string $secretName): void
-    {
-        throw new CustomerSecretsNotImplemented();
+        if (file_exists($this->file)) {
+            $secretResult = json_decode(file_get_contents($this->file), true);
+        } else {
+            $secretResult = [];
+        }
+        $this->secretList->setMetadata($this->secretListMetadata($secretResults));
+        $secrets = [];
+        foreach ($secretResults['Secrets'] as $name => $secretResult) {
+            $secrets[$name] = new Secret($name, $secretResult['Value'], $secretResult['Type'], $secretResult['Scopes']);
+        }
+        $this->secretList->setSecrets($secrets);
     }
 }

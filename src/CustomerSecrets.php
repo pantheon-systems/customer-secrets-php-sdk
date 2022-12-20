@@ -10,12 +10,12 @@ class CustomerSecrets
     /**
      * Construct.
      */
-    private function __construct()
+    private function __construct(array $args = [])
     {
         if (class_exists('\Pantheon\Internal\CustomerSecrets\CustomerSecretsClient')) {
-            $this->client = new CustomerSecretsClient();
+            $this->client = new CustomerSecretsClient($args);
         } else {
-            $this->client = new CustomerSecretsFakeClient();
+            $this->client = new CustomerSecretsFakeClient($args);
         }
     }
 
@@ -27,8 +27,8 @@ class CustomerSecrets
         return $this->client;
     }
 
-    public static function create(): CustomerSecretsClientInterface
+    public static function create(array $args = []): CustomerSecretsClientInterface
     {
-        return new CustomerSecrets();
+        return new CustomerSecrets($args);
     }
 }
