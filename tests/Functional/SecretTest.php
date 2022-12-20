@@ -7,36 +7,31 @@ use PantheonSystems\Internal\Utility\Fixtures;
 use PHPUnit\Framework\TestCase;
 
 /**
- *
+ * Tests for Secret class.
  */
 class SecretTest extends TestCase
 {
     /**
-     * @return void
-     */
-    protected function setUp(): void
-    {
-        $this->fixtures = new Fixtures();
-        // Env vars.
-        $this->fixtures->definePantheonEnvVarFixtures();
-        // For curl https certs.
-        $this->fixtures->setHomeDirectory();
-    }
-
-    /**
-     * @long
+     * @short
      * @return void
      */
     public function testBasicSecretFunctions()
     {
         $value = uniqid("SecretValue");
         $secret = Secret::create([
-            "Type" => "env",
-            "Value" => $value,
-            "Scopes" => ["sjr", "id"],
+            'type' => 'env',
+            'value' => $value,
+            'scopes' => ['user', 'ic'],
+            'name' => 'foo'
         ]);
-        $this->assertEquals($value, $secret->Value, "Secret value should be set correctly.");
-        $this->assertIsArray($secret->Scopes, "Scopes should be an array");
-        $this->assertEquals(2, count($secret->Scopes), "There should be only two scopes");
+        $this->assertEquals('foo', $secret->getName(), "Secret name should be set correctly.");
+        $this->assertEquals($value, $secret->getValue(), "Secret value should be set correctly.");
+        $this->assertEquals('env', $secret->getType(), "Secret type should be set correctly.");
+        $this->assertIsArray($secret->getScopes(), "Scopes should be an array.");
+        $this->assertEquals(2, count($secret->getScopes()), "There should be only two scopes.");
+
+        $secret->addScope('web');
+        $this->assertEquals(4, count($secret->getScopes()), "There should be exactly three scopes.");
+
     }
 }
