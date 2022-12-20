@@ -23,7 +23,7 @@ abstract class CustomerSecretsClientBase implements CustomerSecretsClientInterfa
     /**
      * Fetches secret data for current site.
      */
-    protected abstract function fetchSecrets(): void;
+    abstract protected function fetchSecrets(): void;
 
     /**
      * Retrieves/Generates metatadata about the secret list.
