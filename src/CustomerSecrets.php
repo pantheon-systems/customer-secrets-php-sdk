@@ -27,7 +27,7 @@ class CustomerSecrets
         return $this->client;
     }
 
-    public static function create(array $args = []): CustomerSecretsClientInterface
+    public static function create(array $args = []): CustomerSecrets
     {
         return new CustomerSecrets($args);
     }

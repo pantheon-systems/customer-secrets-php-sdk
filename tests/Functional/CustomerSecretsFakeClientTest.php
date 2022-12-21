@@ -5,6 +5,7 @@ namespace PantheonSystems\Tests\Functional;
 use PantheonSystems\CustomerSecrets\Secret;
 use PHPUnit\Framework\TestCase;
 use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotImplemented;
+use PantheonSystems\CustomerSecrets\CustomerSecretsFakeClient;
 
 /**
  * Tests for CustomerSecretsFakeClientTest class.
@@ -18,7 +19,7 @@ class CustomerSecretsFakeClientTest extends TestCase
 
     public function setUp(): void
     {
-        $this->fakeClient = new \PantheonSystems\CustomerSecrets\CustomerSecretsFakeClient();
+        $this->fakeClient = new CustomerSecretsFakeClient();
     }
 
     /**
