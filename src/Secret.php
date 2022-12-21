@@ -153,7 +153,7 @@ class Secret
      *
      * @return \PantheonSystems\CustomerSecrets\Secret
      */
-    public static function create(array $values): static
+    public static function create(array $values): Secret
     {
         return new static(
             $values['name'],
