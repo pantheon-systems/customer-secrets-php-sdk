@@ -15,7 +15,7 @@ jobs:
     name: PHP Compatibility
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: PHPCompatibility
         uses: pantheon-systems/phpcompatibility-action@v1
         with:
@@ -26,7 +26,7 @@ jobs:
     name: PHP Coding Standards
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
@@ -64,7 +64,7 @@ jobs:
       DEPENDENCIES: ${{ matrix.dependencies }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
         with:
