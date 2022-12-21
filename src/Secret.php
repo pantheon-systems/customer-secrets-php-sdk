@@ -52,7 +52,7 @@ class Secret
         string $name,
         ?string $value,
         string $type,
-        array $scopes,
+        array $scopes
     ) {
         $this->name = $name;
         $this->value = $value;
