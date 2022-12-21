@@ -46,13 +46,13 @@ jobs:
           - ubuntu-latest
         php-version:
           - php: "7.4"
-            scenario: "7.4"
+            scenario: "php7.4"
           - php: "8.0"
             scenario: "default"
           - php: "8.1"
-            scenario: "8.1"
+            scenario: "php8.1"
           - php: "8.2"
-            scenario: "8.2"
+            scenario: "php8.2"
         php-ini-values:
           - assert.exception=1, zend.assertions=1
         dependencies:
@@ -74,6 +74,6 @@ jobs:
       - name: Install composer
         run: composer install --no-interaction --prefer-dist
       - name: Install Composer Dependencies for current scenario
-        run: composer scenario php${{ matrix.php-version.scenario }}
+        run: composer scenario ${{ matrix.php-version.scenario }}
       - name: Functional Tests
         run: composer test
