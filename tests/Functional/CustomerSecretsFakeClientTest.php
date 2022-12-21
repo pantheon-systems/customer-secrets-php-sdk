@@ -3,8 +3,8 @@
 namespace PantheonSystems\Tests\Functional;
 
 use PantheonSystems\CustomerSecrets\Secret;
-use PantheonSystems\Internal\Utility\Fixtures;
 use PHPUnit\Framework\TestCase;
+use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotImplemented;
 
 /**
  * Tests for CustomerSecretsFakeClientTest class.
@@ -19,6 +19,35 @@ class CustomerSecretsFakeClientTest extends TestCase
     public function setUp(): void
     {
         $this->fakeClient = new \PantheonSystems\CustomerSecrets\CustomerSecretsFakeClient();
+    }
+
+    /**
+     * @group short
+     */
+    public function testSetSecret(): void
+    {
+        $secret = Secret::create([
+            'type' => 'env',
+            'value' => 'bar',
+            'scopes' => ['user', 'ic'],
+            'name' => 'foo'
+        ]);
+
+        $this->expectException(CustomerSecretsNotImplemented::class);
+        $this->expectExceptionMessage('Customer Secrets method not yet implemented.');
+
+        $this->fakeClient->setSecret($secret);
+    }
+
+    /**
+     * @group short
+     */
+    public function testDeleteSecret(): void
+    {
+        $this->expectException(CustomerSecretsNotImplemented::class);
+        $this->expectExceptionMessage('Customer Secrets method not yet implemented.');
+
+        $this->fakeClient->deleteSecret('foo');
     }
 
     /**
