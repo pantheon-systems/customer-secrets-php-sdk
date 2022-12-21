@@ -3,65 +3,69 @@
 namespace PantheonSystems\Tests\Functional;
 
 use PantheonSystems\CustomerSecrets\SecretList;
-use PantheonSystems\Internal\Utility\Fixtures;
-use PantheonSystems\Internal\Utility\Uuid;
+use PantheonSystems\CustomerSecrets\Secret;
 use PHPUnit\Framework\TestCase;
 
 /**
- *
+ * Tests for SecretList class.
  */
 class SecretListTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    protected function setUp(): void
-    {
-        $this->fixtures = new Fixtures();
-        // Env vars.
-        $this->fixtures->definePantheonEnvVarFixtures();
-        // For curl https certs.
-        $this->fixtures->setHomeDirectory();
-    }
 
     /**
-     * @short
-     * @return void
-     * @throws \Exception
+     * @group short
      */
     public function testSecretListInst()
     {
-        $siteID = Uuid::createUUID();
-        $value1 = uniqid('value');
-        $value2 = uniqid('value');
-        $secretList = new SecretList(
-            $siteID,
-            [
-                "value1" => $value1,
-                "value2" => $value2,
-            ],
+        $secret1 = Secret::create([
+            'type' => 'env',
+            'value' => 'bar',
+            'scopes' => ['user', 'ic'],
+            'name' => 'foo'
+        ]);
+        $secret2 = Secret::create([
+            'type' => 'composer',
+            'value' => 'loremipsum',
+            'scopes' => ['user', 'ic'],
+            'name' => 'github-oauth'
+        ]);
+        $secrets = [
+            'foo' => $secret1,
+            'github-oauth' => $secret2,
+        ];
+
+        $metadata = [
+            'SiteID' => 'aaaa-bbbb-ccc-ddddd',
+            'Count' => count($secrets),
+            'Version' => '',
+            'Scopes' => ['user', 'ic'],
+        ];
+
+        $secretList = new SecretList($secrets, $metadata);
+
+        $this->assertEquals(
+            $secrets,
+            $secretList->getSecrets(),
+            'Site secrets should have not changed from the original value.'
         );
-        $secretList->secretListMetadata();
-        $this->assertEquals($siteID, $secretList->siteId, "Site ID should be set");
-        $secrets = $secretList->secrets;
-        $this->assertIsArray($secrets, "Secret Values should be an array.");
-        $this->assertEquals(2, count($secrets), "There should be 2 stored secrets.");
-        $this->assertArrayHasKey("value1", $secrets, "Values should have value1 key");
-        $this->assertArrayHasKey("value2", $secrets, "Values should have value2 key");
-        $this->assertIsString($value1, $secrets['value1']);
-        $this->assertIsString($value2, $secrets['value2']);
-    }
+        $this->assertEquals(
+            $metadata,
+            $secretList->getMetadata(),
+            'Site secrets should have not changed from the original value.'
+        );
 
+        $newSecret = Secret::create([
+            'type' => 'env',
+            'value' => 'bar2',
+            'scopes' => ['user', 'ic'],
+            'name' => 'foo2'
+        ]);
 
-    /**
-     * @test
-     * @return void
-     */
-    public function testApiFunctionality()
-    {
-        if (strtolower(PHP_OS) == "darwin") {
-            $this->markTestSkipped("Skipped when running on MacOS");
-        }
-        $this->fail("Figure out how to test this.");
+        $secrets['foo2'] = $newSecret;
+
+        $secretList->setSecrets($secrets);
+
+        $newCount = count($secretList->getSecrets());
+        $this->assertEquals(3, $newCount, 'Site secrets count should be 3.');
     }
 }
