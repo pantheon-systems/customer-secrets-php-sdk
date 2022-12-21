@@ -77,6 +77,13 @@ class CustomerSecretsFakeClientTest extends TestCase
                 $secrets,
                 'Secrets should contain the expected secret: ' . $secretName
             );
+
+            $secret = $this->fakeClient->getSecret($secretName);
+            $this->assertEquals(
+                $secretName,
+                $secret->getName(),
+                'Secret name should match the expected: ' . $secretName . ' secret name.'
+            );
         }
     }
 
