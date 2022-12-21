@@ -45,27 +45,37 @@ jobs:
     if: ${{ github.repository_owner == 'pantheon-systems' }}
     strategy:
       matrix:
-        operating-system: [ 'macos-latest' ]
-        php-versions: [ '7.4', '8.2' ]
-      max-parallel: 2
+        os:
+          - ubuntu-latest
+        php-version:
+          - php: "7.4"
+            scenario: "7.4"
+          - php: "8.0"
+            scenario: "default"
+          - php: "8.1"
+            scenario: "8.1"
+          - php: "8.2"
+            scenario: "8.2"
+        php-ini-values:
+          - assert.exception=1, zend.assertions=1, phar.readonly=false, variables_order="EGPCS"
+        dependencies:
+          - highest
+          - lowest
+          - current
+      max-parallel: 3
+    env:
+      DEPENDENCIES: ${{ matrix.dependencies }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup PHP with PECL extension
+      - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          extensions: gd, mbstring, zip, ssh2-1.3.1
+          php-version: ${{ matrix.php.php }}
           coverage: pcov
-          ini-values: error_reporting=E_ALL
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: ${{ matrix.php-ini-values }}
       - name: Install Composer Dependencies
-        run: composer install --no-interaction --prefer-dist
-      - name: Functional Tests (short)
-        if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event.inputs.functional_tests_group == 'all' }}
-        run: composer test:short
-      - name: Functional Tests (long)
-        if: ${{ github.event_name == 'schedule' || github.event.inputs.functional_tests_group == 'all' }}
-        run: composer test:long
-      - name: Functional Tests (arbitrary group)
-        if: ${{ github.event.inputs.functional_tests_group != '' && github.event.inputs.functional_tests_group != 'all' }}
-        run: composer test:group -- ${{ github.event.inputs.functional_tests_group }}
+        run: composer scenario php${{ matrix.php-versions.scenario }}
+      - name: Functional Tests
+        run: composer test

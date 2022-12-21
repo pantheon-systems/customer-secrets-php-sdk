@@ -37,14 +37,8 @@
         "cs": [
             "vendor/bin/phpcs --standard=PSR2 src tests"
         ],
-        "test:short": [
-          "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --group=short --do-not-cache-result --verbose --stop-on-failure"
-        ],
-        "test:long": [
-          "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --group=long --do-not-cache-result --verbose"
-        ],
-        "test:functional": [
-          "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --group=short,long --do-not-cache-result --verbose"
+        "test": [
+          "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --do-not-cache-result --verbose --stop-on-failure"
         ]
     },
     "extra": {
