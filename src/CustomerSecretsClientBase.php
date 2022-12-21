@@ -2,6 +2,8 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
+use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotImplemented;
+
 abstract class CustomerSecretsClientBase implements CustomerSecretsClientInterface
 {
 
