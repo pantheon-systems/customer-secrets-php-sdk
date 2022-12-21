@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9689ecea25464c0059069189e06da99e",
+    "content-hash": "73982017501e60ef7a1a43cad6ee83de",
     "packages": [
         {
             "name": "g1a/composer-test-scenarios",
