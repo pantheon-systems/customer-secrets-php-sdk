@@ -23,15 +23,23 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
         $this->file = $args['file'];
     }
 
-        /**
+    /**
+     * Get secrets file.
+     */
+    public function getFilepath(): string
+    {
+        return $this->file;
+    }
+
+    /**
      * Fetches secret data for current site.
      */
     protected function fetchSecrets(): void
     {
         if (file_exists($this->file)) {
-            $secretResult = json_decode(file_get_contents($this->file), true);
+            $secretResults = json_decode(file_get_contents($this->getFilepath()), true);
         } else {
-            $secretResult = [];
+            $secretResults = [];
         }
         $this->secretList->setMetadata($this->secretListMetadata($secretResults));
         $secrets = [];

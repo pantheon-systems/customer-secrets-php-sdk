@@ -18,9 +18,9 @@ class Secret
     /**
      * Secret value.
      *
-     * @var string
+     * @var ?string
      */
-    protected string $value;
+    protected ?string $value;
 
     /**
      * Secret type.
@@ -50,7 +50,7 @@ class Secret
      */
     public function __construct(
         string $name,
-        string $value,
+        ?string $value,
         string $type,
         array $scopes,
     ) {
@@ -88,7 +88,7 @@ class Secret
      * @param string $value
      *   The value of the secret.
      */
-    public function setValue(string $value): void
+    public function setValue(?string $value): void
     {
         $this->value = $value;
     }

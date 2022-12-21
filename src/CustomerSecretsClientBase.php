@@ -44,6 +44,22 @@ abstract class CustomerSecretsClientBase implements CustomerSecretsClientInterfa
     }
 
     /**
+     * Get secrets metadata for current site.
+     *
+     * @param bool $refresh
+     *   Whether to refresh the secret list.
+     *
+     * @return array
+     */
+    public function getSecretsMetadata(bool $refresh = false): array
+    {
+        if ($refresh || empty($this->secretList->getMetadata())) {
+            $this->fetchSecrets();
+        }
+        return $this->secretList->getMetadata();
+    }
+
+    /**
      * Get all secrets for current site.
      *
      * @param bool $refresh
