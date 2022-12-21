@@ -40,8 +40,8 @@ jobs:
         run: composer cs
 
   functional:
-    runs-on: ${{ matrix.operating-system }}
-    name: Functional testing matrix - PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }}
+    runs-on: ${{ matrix.os }}
+    name: Functional testing matrix - PHP ${{ matrix.php-versions.php }} (matrix.php-versions.scenario) on ${{ matrix.os }}
     if: ${{ github.repository_owner == 'pantheon-systems' }}
     strategy:
       matrix:
@@ -57,7 +57,7 @@ jobs:
           - php: "8.2"
             scenario: "8.2"
         php-ini-values:
-          - assert.exception=1, zend.assertions=1, phar.readonly=false, variables_order="EGPCS"
+          - assert.exception=1, zend.assertions=1
         dependencies:
           - highest
           - lowest
