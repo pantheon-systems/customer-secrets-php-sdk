@@ -29,6 +29,7 @@ class CustomerSecretsClientTest extends TestCase
 
         $this->internalClient = $this->getMockBuilder(InternalClientInterface::class)
             ->disableOriginalConstructor()
+            ->setMethods(['get'])
             ->getMock();
 
         $this->secretsClient->setInternalClient($this->internalClient);
