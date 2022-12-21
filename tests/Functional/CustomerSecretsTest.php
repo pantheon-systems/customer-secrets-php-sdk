@@ -24,7 +24,5 @@ class CustomerSecretsTest extends TestCase
         $this->assertInstanceOf('PantheonSystems\CustomerSecrets\CustomerSecretsFakeClient', $client);
 
         $this->assertEquals('myfile.json', $client->getFilepath(), 'Filepath is not set correctly');
-
-
     }
 }

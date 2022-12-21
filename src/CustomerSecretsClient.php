@@ -3,15 +3,17 @@
 namespace PantheonSystems\CustomerSecrets;
 
 use Pantheon\Internal\CustomerSecrets\CustomerSecretsClient as InternalClient;
+use Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface as InternalClientInterface;
+use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotReady;
 
 class CustomerSecretsClient extends CustomerSecretsClientBase implements CustomerSecretsClientInterface
 {
     /**
      * Secrets internal client.
      *
-     * @var object internal client
+     * @var Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface $internalClient
      */
-    protected $internalClient;
+    protected InternalClientInterface $internalClient;
 
     /**
      * CustomerSecretsClient constructor.
@@ -22,7 +24,21 @@ class CustomerSecretsClient extends CustomerSecretsClientBase implements Custome
         if (empty($args['version'])) {
             $args['version'] = '1';
         }
-        $this->internalClient = InternalClient::create($args);
+
+        // If testMode is set, then we are in a test environment and we should not yet create the InternalClient.
+        if (empty($args['testMode'])) {
+            $this->internalClient = InternalClient::create($args);
+        }
+    }
+
+    /**
+     * Set internal client.
+     *
+     * @param Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface $internalClient
+     */
+    public function setInternalClient(InternalClientInterface $internalClient): void
+    {
+        $this->internalClient = $internalClient;
     }
 
     /**
@@ -30,6 +46,11 @@ class CustomerSecretsClient extends CustomerSecretsClientBase implements Custome
      */
     protected function fetchSecrets(): void
     {
+        // Throw exception if internal client is not set.
+        if (empty($this->internalClient)) {
+            throw new CustomerSecretsNotReady();
+        }
+
         $secretResults = $this->internalClient->get();
         $this->secretList->setMetadata($this->secretListMetadata($secretResults));
         $secrets = [];
