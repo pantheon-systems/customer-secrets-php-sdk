@@ -1,0 +1,51 @@
+{
+    "name": "pantheon-systems/customer-secrets-php-sdk",
+    "description": "Supporting libraries for customer secrets project",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PantheonSystems\\CustomerSecrets\\": "../../src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom Stovall",
+            "email": "119924+stovak@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "g1a/composer-test-scenarios": "^3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/yaml": "^5",
+        "yoast/phpunit-polyfills": "^1.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "g1a/composer-test-scenarios": true
+        },
+        "vendor-dir": "../../vendor"
+    },
+    "scripts": {
+        "cs": [
+            "vendor/bin/phpcs --standard=PSR2 src tests"
+        ],
+        "test:short": [
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --group=short --do-not-cache-result --verbose --stop-on-failure"
+        ],
+        "test:long": [
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --group=long --do-not-cache-result --verbose"
+        ],
+        "test:functional": [
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --group=short,long --do-not-cache-result --verbose"
+        ]
+    }
+}
