@@ -13,7 +13,7 @@ interface CustomerSecretsClientInterface
     /**
      * Get a specific secret for current site.
      */
-    public function getSecret(string $secretName): Secret;
+    public function getSecret(string $secretName): ?Secret;
 
     /**
      * Create a new secret for current site.
