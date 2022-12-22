@@ -81,7 +81,7 @@ abstract class CustomerSecretsClientBase implements CustomerSecretsClientInterfa
      * @param bool $refresh
      *   Whether to refresh the secret list.
      */
-    public function getSecret(string $secretName, bool $refresh = false): Secret
+    public function getSecret(string $secretName, bool $refresh = false): ?Secret
     {
         $secrets = $this->getSecrets($refresh);
         return $secrets[$secretName] ?? null;
