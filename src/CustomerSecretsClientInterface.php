@@ -2,7 +2,8 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
-interface CustomerSecretsClientInterface {
+interface CustomerSecretsClientInterface
+{
 
     /**
      * Get all secrets for current site.
@@ -12,7 +13,7 @@ interface CustomerSecretsClientInterface {
     /**
      * Get a specific secret for current site.
      */
-    public function getSecret(string $secretName): Secret;
+    public function getSecret(string $secretName): ?Secret;
 
     /**
      * Create a new secret for current site.
@@ -23,5 +24,4 @@ interface CustomerSecretsClientInterface {
      * Delete a secret for current site.
      */
     public function deleteSecret(string $secretName): void;
-
 }

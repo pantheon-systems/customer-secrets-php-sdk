@@ -1,0 +1,79 @@
+name: CI Tests
+on:
+  push:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      functional_tests_group:
+        description: Run arbitrary functional tests group by name or all (short and long) tests (default)
+        required: true
+        default: all
+jobs:
+  phpcompatibility:
+    runs-on: ubuntu-latest
+    name: PHP Compatibility
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: PHPCompatibility
+        uses: pantheon-systems/phpcompatibility-action@v1
+        with:
+          test-versions: 7.4-
+
+  phpcs:
+    runs-on: ubuntu-latest
+    name: PHP Coding Standards
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+      - name: Install composer
+        run: composer install --no-interaction --prefer-dist
+      - name: Run tests
+        run: composer cs
+
+  functional:
+    runs-on: ${{ matrix.os }}
+    name: Functional testing matrix - PHP ${{ matrix.php-version.php }} (${{ matrix.php-version.scenario }}) on ${{ matrix.os }}
+    if: ${{ github.repository_owner == 'pantheon-systems' }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        php-version:
+          - php: "7.4"
+            scenario: "php7.4"
+          - php: "8.0"
+            scenario: "default"
+          - php: "8.1"
+            scenario: "php8.1"
+          - php: "8.2"
+            scenario: "php8.2"
+        php-ini-values:
+          - assert.exception=1, zend.assertions=1
+        dependencies:
+          - highest
+          - lowest
+          - current
+      max-parallel: 3
+    env:
+      DEPENDENCIES: ${{ matrix.dependencies }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version.php }}
+          coverage: pcov
+          ini-values: ${{ matrix.php-ini-values }}
+      - name: Install composer
+        run: composer install --no-interaction --prefer-dist
+      - name: Install Composer Dependencies for current scenario
+        run: composer scenario ${{ matrix.php-version.scenario }}
+      - name: Functional Tests
+        run: composer test

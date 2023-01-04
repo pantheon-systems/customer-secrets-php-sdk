@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "PantheonSystems\\CustomerSecrets\\": "src/"
+            "PantheonSystems\\CustomerSecrets\\": "../../src/"
         }
     },
     "authors": [
@@ -22,45 +22,21 @@
         "g1a/composer-test-scenarios": "^3.2"
     },
     "config": {
+        "platform": {
+            "php": "8.2.0"
+        },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "g1a/composer-test-scenarios": true
         },
-        "platform": {
-            "php": "8.0.26"
-        }
+        "vendor-dir": "../../vendor"
     },
     "scripts": {
         "cs": [
             "vendor/bin/phpcs --standard=PSR2 src tests"
         ],
         "test": [
-          "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --do-not-cache-result --verbose --stop-on-failure"
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --do-not-cache-result --verbose --stop-on-failure"
         ]
-    },
-    "extra": {
-        "scenarios": {
-            "php7.4": {
-                "config": {
-                    "platform": {
-                        "php": "7.4.33"
-                    }
-                }
-            },
-            "php8.1": {
-                "config": {
-                    "platform": {
-                        "php": "8.1.13"
-                    }
-                }
-            },
-            "php8.2": {
-                "config": {
-                    "platform": {
-                        "php": "8.2.0"
-                    }
-                }
-            }
-        }
     }
 }

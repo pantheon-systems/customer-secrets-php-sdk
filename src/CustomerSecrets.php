@@ -2,19 +2,20 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
-class CustomerSecrets {
+class CustomerSecrets
+{
 
     protected $client;
     
     /**
      * Construct.
      */
-    public function __construct()
+    private function __construct(array $args = [])
     {
         if (class_exists('\Pantheon\Internal\CustomerSecrets\CustomerSecretsClient')) {
-            $this->client = new CustomerSecretsClient();
+            $this->client = new CustomerSecretsClient($args);
         } else {
-            $this->client = new CustomerSecretsFakeClient();
+            $this->client = new CustomerSecretsFakeClient($args);
         }
     }
 
@@ -26,9 +27,8 @@ class CustomerSecrets {
         return $this->client;
     }
 
-    public static function create(): CustomerSecretsClientInterface
+    public static function create(array $args = []): CustomerSecrets
     {
-        return (new CustomerSecrets())->getClient();
+        return new CustomerSecrets($args);
     }
-
 }

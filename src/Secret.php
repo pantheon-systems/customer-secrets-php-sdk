@@ -18,9 +18,9 @@ class Secret
     /**
      * Secret value.
      *
-     * @var string
+     * @var ?string
      */
-    protected string $value;
+    protected ?string $value;
 
     /**
      * Secret type.
@@ -50,9 +50,9 @@ class Secret
      */
     public function __construct(
         string $name,
-        string $value,
+        ?string $value,
         string $type,
-        array $scopes,
+        array $scopes
     ) {
         $this->name = $name;
         $this->value = $value;
@@ -88,7 +88,7 @@ class Secret
      * @param string $value
      *   The value of the secret.
      */
-    public function setValue(string $value): void
+    public function setValue(?string $value): void
     {
         $this->value = $value;
     }
@@ -153,7 +153,7 @@ class Secret
      *
      * @return \PantheonSystems\CustomerSecrets\Secret
      */
-    public static function create(array $values): static
+    public static function create(array $values): Secret
     {
         return new static(
             $values['name'],

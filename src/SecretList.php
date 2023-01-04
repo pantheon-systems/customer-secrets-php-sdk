@@ -76,5 +76,4 @@ class SecretList
     {
         $this->metadata = $metadata;
     }
-
 }
