@@ -10,7 +10,7 @@ class CustomerSecrets
     /**
      * Construct.
      */
-    private function __construct(array $args = [])
+    protected function __construct(array $args = [])
     {
         if (class_exists('\Pantheon\Internal\CustomerSecrets\CustomerSecretsClient')) {
             $this->client = new CustomerSecretsClient($args);
