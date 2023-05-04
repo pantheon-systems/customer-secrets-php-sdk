@@ -22,16 +22,18 @@ In your PHP code, do the following:
 use PantheonSystems\CustomerSecrets\CustomerSecrets;
 
 $client = CustomerSecrets::create()->getClient();
-$secrets = $client->getSecrets();
 $secret = $client->getSecret('foo');
-
 $secret_value = $secret->getValue();
+
+// You could also get all of your secrets like this:
+$secrets = $client->getSecrets();
 ```
 
 See the included classes and internal documentation for more examples and use cases.
 
 Note: Only get has been implemented so far. You should handle your secrets through terminus using [Terminus Secrets Manager](https://github.com/pantheon-systems/terminus-secrets-manager-plugin).
 
-## Restrictions
+See our detailed [Drupal](docs/drupal-example.md) or [WordPress](docs/wordpress-example.md) examples for more detailed end to end examples.
 
-This SDK will only read secrets with scope `web` and type `env`. Secrets get cached in the server for 15 minutes so you should wait (at most) that time if you modified your site secrets.
+## Restrictions
+This SDK will only read secrets with scope `web`. Secrets get cached in the server for 15 minutes so you should wait (at most) that time if you modified your site secrets.
