@@ -1,6 +1,6 @@
 # WordPress example
 
-Please look at the [plugin README](../README.md) if you have not done so yet.
+Please look at the [package README](../README.md) if you have not done so yet.
 
 In this guide, we will go over an end to end example on how to use the Secrets PHP SDK to avoid putting [Sendgrid](https://sendgrid.com/) API Key into the WordPress database through the [POST SMTP Mailer](https://wordpress.org/plugins/post-smtp/) plugin.
 
@@ -11,6 +11,8 @@ In this guide, we will go over an end to end example on how to use the Secrets P
 1) Make sure you have [terminus installed](https://docs.pantheon.io/terminus/install#install-terminus) in your machine
 
 1) Install the [Secrets Manager Plugin](https://github.com/pantheon-systems/terminus-secrets-manager-plugin#installation)
+
+## Step by step guide
 
 1) Install the required WordPress plugin in your site:
 
@@ -28,7 +30,7 @@ In this guide, we will go over an end to end example on how to use the Secrets P
 
     ```
     git add composer.json composer.lock
-    git commit -m "Add require plugin and package."
+    git commit -m "Add required plugin and package."
     git push
     ```
 
