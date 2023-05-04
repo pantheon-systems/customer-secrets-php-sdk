@@ -45,25 +45,24 @@ In this guide, we will go over an end to end example on how to use the Secrets P
     - Use a dummy value (i.e. not your real value) in the API Key field (we will override this later using a custom plugin)
     - Sending a Test email won't work initially because you didn't use the right API Key.
 
-1) Create a new plugin and register a `plugins_loaded` action. This code will initially look like this:
+1) Create a new plugin and hook a `plugins_loaded` action. This code will initially look like this:
 
     ```
     <?php
+    /**
+     * Plugin Name: secrets-demo
+     * Plugin URI: https://packagist.org/packages/pantheon-systems/customer-secrets-php-sdk
+     * Description: Secrets Demo.
+     * Version: 0.1
+     * Author: Pantheon Systems
+     * Author URI: https://pantheon.io/
+     */
 
     namespace Pantheon_Secrets_Demo;
 
     use PantheonSystems\CustomerSecrets\CustomerSecrets;
 
-    /**
-    * Plugin Name: secrets-demo
-    * Plugin URI: https://packagist.org/packages/pantheon-systems/customer-secrets-php-sdk
-    * Description: Secrets Demo.
-    * Version: 0.1
-    * Author: Pantheon Systems
-    * Author URI: https://pantheon.io/
-    **/
-
-    add_action( 'plugins_loaded', 'Pantheon_Secrets_Demo\\secrets_demo_init' );
+    add_action( 'plugins_loaded', 'Pantheon_Secrets_Demo\\secrets_demo_init', 0 );
 
     function secrets_demo_init() {
         
@@ -75,8 +74,6 @@ In this guide, we will go over an end to end example on how to use the Secrets P
     ```
     function secrets_demo_init() {
         if (defined('POST_SMTP_API_KEY')) {
-            echo "POST_SMTP_API_KEY is already defined.";
-            echo POST_SMTP_API_KEY;
             exit;
         }
             
