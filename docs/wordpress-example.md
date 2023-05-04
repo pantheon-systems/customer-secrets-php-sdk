@@ -42,7 +42,7 @@ In this guide, we will go over an end to end example on how to use the Secrets P
 
     - Sender email address should be a Verified Sender
     - Outgoing Mail Server Hostname is `smtp.sendgrid.net`
-    - Use a dumb value (i.e. not your real value) in the API Key field (we will override this later using a custom plugin)
+    - Use a dummy value (i.e. not your real value) in the API Key field (we will override this later using a custom plugin)
     - Sending a Test email won't work initially because you didn't use the right API Key.
 
 1) Create a new plugin and register a `plugins_loaded` action. This code will initially look like this:
