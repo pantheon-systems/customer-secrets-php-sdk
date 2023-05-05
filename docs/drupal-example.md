@@ -16,6 +16,65 @@ Please note that using the Key module and [Pantheon Secrets](https://www.drupal.
 
 ## Step by step guide
 
+### Option 1: Use settings.php to alter the config on every request.
+
+Please note that this option may not be ideal because this code will run on every request; but it is still a valid option you may want to explore.
+
+1) Install the required module in your site:
+
+    ```
+    composer require drupal/sendgrid_integration
+    ```
+
+1) Install the Secrets PHP SDK:
+
+    ```
+    composer require pantheon-systems/customer-secrets-php-sdk:"^1.0"
+    ```
+
+1) Commit and push your changes to Pantheon:
+
+    ```
+    git add composer.json composer.lock
+    git commit -m "Add required module and package."
+    git push
+    ```
+
+1) Make sure your Sendgrid account is correctly configured and allows sending email.
+
+1) Create a Sendgrid API key by following [Sendgrid instructions](https://docs.sendgrid.com/ui/account-and-settings/api-keys#creating-an-api-key)
+
+1) Install and configure the `sendgrid_integration` module. Use a dummy value (i.e. not real) for the API Key field
+
+1) Set you API key as a site secret:
+
+    ```
+    terminus secret:site:set <site> sendgrid_api_key --type=runtime --scope=web,user <api_key>
+    ```
+
+1) Add the following contents to your `settings.php` file:
+
+    ```
+    $secrets_client = \PantheonSystems\CustomerSecrets\CustomerSecrets::create()->getClient();
+    $secret = $secrets_client->getSecret('sendgrid_api_key');
+    if ($secret) {
+      $api_key = $secret->getValue();
+      $config['sendgrid_integration.settings']['apikey'] = $api_key;
+    }
+    ```
+
+1) Commit and push your changes:
+
+    ```
+    git add web/sites/default/settings.php
+    git commit -m "Override secret value in settings.php."
+    git push
+    ```
+
+1) Send a test email by visiting `/admin/config/services/sendgrid/test`. It should work.
+
+### Option 2: Use a module to alter the config only when it is read.
+
 1) Install the required module in your site:
 
     ```
