@@ -88,17 +88,26 @@ In this guide, we will go over an end to end example on how to use the Secrets P
     }
     ```
 
+1) Add a line to your .gitignore to be able to track your plugin file in git:
+
+    ```
+    echo "\!web/app/plugins/secrets-demo" >> .gitignore
+    ```
+
 1) Commit and push your changes to Pantheon:
 
     ```
-    # Note: This assumes that your plugin is named secrets-demo, it lives under web/app/plugins and the `.gitignore` was successfully updated to allow adding the plugin.
-
+    git add .gitignore
     git add web/app/plugins/secets-demo
     git commit -m "Add secrets-demo plugin."
     git push
     ```
 
-1) Activate your new plugin from the WordPress dashboard
+1) Activate your new plugin from the WordPress dashboard or using the following command:
+
+    ```
+    terminus remote:wp "${SITE}.${ENV}" -- plugin activate secrets-demo
+    ```
 
 1) Set you API key as a site secret:
 
