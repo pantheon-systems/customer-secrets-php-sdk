@@ -1,5 +1,7 @@
 # customer-secrets-php-sdk
 
+[![Early Access](https://img.shields.io/badge/Pantheon-Early_Access-yellow?logo=pantheon&color=FFDC28)](https://docs.pantheon.io/oss-support-levels#early-access)
+
 This library should be used to access Pantheon Sites Secrets (currently in EA).
 
 ## Early Access
