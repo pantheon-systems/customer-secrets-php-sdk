@@ -1,6 +1,6 @@
 # customer-secrets-php-sdk
 
-[![Early Access](https://img.shields.io/badge/Pantheon-Early_Access-yellow?logo=pantheon&color=FFDC28)](https://docs.pantheon.io/oss-support-levels#early-access)
+[![Early Access](https://img.shields.io/badge/Pantheon-Early_Access-yellow?logo=pantheon&color=FFDC28)](https://docs.pantheon.io/oss-support-levels#early-access) [![Build Status](https://img.shields.io/github/actions/workflow/status/pantheon-systems/customer-secrets-php-sdk/ci.yml)](https://github.com/pantheon-systems/customer-secrets-php-sdk/actions/workflows/ci.yml)
 
 This library should be used to access Pantheon Sites Secrets (currently in EA).
 
