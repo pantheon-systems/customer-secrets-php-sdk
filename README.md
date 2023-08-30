@@ -43,5 +43,31 @@ The SDK includes a `CustomerSecretsFakeClient` implementation that is used when 
 
 To get this file, you should use the [plugin](https://github.com/pantheon-systems/terminus-secrets-manager-plugin/) `secret:site:local-generate` command and then set an environment variable into your local environment (or docker container if you are running a dockerized environment) with name `CUSTOMER_SECRETS_FAKE_FILE` and use the absolute path to the file as the value.
 
+#### Lando example
+
+To setup this using lando, you should modify your `.lando.yml` like this:
+
+```
+services:
+  appserver:
+    overrides:
+      environment:
+          CUSTOMER_SECRETS_FAKE_FILE: /app/secrets.json
+```
+
+Then, generate the secrets file like this:
+
+```
+terminus secret:site:local-generate --filepath=./secrets.json
+```
+
+And rebuild lando application:
+
+```
+lando rebuild -y
+```
+
+Then, you will be able to use your secrets through the SDK.
+
 ## Restrictions
 This SDK will only read secrets with scope `web`. Secrets get cached in the server for 15 minutes so you should wait (at most) that time if you modified your site secrets.
