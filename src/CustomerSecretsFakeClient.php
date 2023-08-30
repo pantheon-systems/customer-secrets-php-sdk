@@ -13,14 +13,25 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
 
     /**
      * CustomerSecretsClient constructor.
+     *
+     * @param $args array
+     *   Options for the fake client.
+     *     - file: If not provided, default to value of env var CUSTOMER_SECRETS_FAKE_FILE or /tmp/secrets.json
      */
-    public function __construct(array $args = ['file' => '/tmp/secrets.json'])
+    public function __construct(array $args = [])
     {
         parent::__construct();
-        if (empty($args['file'])) {
-            $args['file'] = '/tmp/secrets.json';
+        $file = null;
+        if (!empty($args['file'])) {
+            $file = $args['file'];
         }
-        $this->file = $args['file'];
+        if (!$file && getenv('CUSTOMER_SECRETS_FAKE_FILE')) {
+            $file = getenv('CUSTOMER_SECRETS_FAKE_FILE');
+        }
+        if (!$file) {
+            $file = '/tmp/secrets.json';
+        }
+        $this->file = $file;
     }
 
     /**
