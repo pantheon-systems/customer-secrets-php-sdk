@@ -22,4 +22,12 @@ SOFTWARE.
 
 DEPENDENCY LICENSES:
 
-Name Version Licenses
+Name                          Version Licenses
+guzzlehttp/guzzle             7.8.0   MIT
+guzzlehttp/promises           2.0.1   MIT
+guzzlehttp/psr7               2.6.1   MIT
+psr/http-client               1.0.2   MIT
+psr/http-factory              1.0.2   MIT
+psr/http-message              2.0     MIT
+ralouphie/getallheaders       3.0.3   MIT
+symfony/deprecation-contracts v3.3.0  MIT
