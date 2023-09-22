@@ -32,7 +32,7 @@
             "g1a/composer-test-scenarios": true
         },
         "platform": {
-            "php": "8.0.0"
+            "php": "8.0.26"
         }
     },
     "scripts": {
