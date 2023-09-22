@@ -18,5 +18,5 @@
     <file>src</file>
 
     <!-- Include all rules from the Zend Coding Standard -->
-    <rule ref="OpsWayStrictPSR12CodingStandard"/>
+    <rule ref="coding-standard"/>
 </ruleset>

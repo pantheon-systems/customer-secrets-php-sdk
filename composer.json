@@ -17,7 +17,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.0",
-        "ext-json": "*"
+        "ext-json": "*",
+        "opsway/psr12-strict-coding-standard": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9",
@@ -37,10 +38,10 @@
     },
     "scripts": {
         "cs": [
-            "vendor/bin/phpcs --standard=PSR12 src tests"
+            "vendor/bin/phpcs"
         ],
         "fix": [
-            "vendor/bin/phpcbf --standard=PSR12 src tests"
+            "vendor/bin/phpcbf"
         ],
         "test": [
           "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --do-not-cache-result --verbose --stop-on-failure"

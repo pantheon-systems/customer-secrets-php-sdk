@@ -1,29 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PantheonSystems\CustomerSecrets;
 
-/**
- *
- */
+use Exception;
+
+use function json_decode;
+
 class SecretList
 {
     use SecretListMetadataTrait;
 
     /**
      * Secrets.
-     *
-     * @var array
      */
     protected array $secrets;
-
 
     /**
      * Creates a new SecretList object.
      *
-     * @param array $secrets
-     *   The secrets.
+     *     The secrets.
+     *
      * @param array $secretListMetadata
-     *   The secret list metadata.
+     *     The secret list metadata.
      */
     public function __construct(array $secrets = [], array $metadata = [])
     {
@@ -34,10 +34,10 @@ class SecretList
     /**
      * Get secrets.
      *
-     * @return array
-     *   The secrets.
+     *
+     *     The secrets.
      */
-    public function getSecrets(): array
+    public function getSecrets() : array
     {
         return $this->secrets;
     }
@@ -45,10 +45,10 @@ class SecretList
     /**
      * Set secrets.
      *
-     * @param array $secrets
-     *   The secrets.
+     *
+     *     The secrets.
      */
-    public function setSecrets(array $secrets): void
+    public function setSecrets(array $secrets) : void
     {
         $this->secrets = $secrets;
     }
@@ -56,10 +56,10 @@ class SecretList
     /**
      * Get secret list metadata.
      *
-     * @return array
-     *   The secret list metadata.
+     *
+     *     The secret list metadata.
      */
-    public function getMetadata(): array
+    public function getMetadata() : array
     {
         return $this->metadata;
     }
@@ -67,21 +67,19 @@ class SecretList
     /**
      * Set secret list metadata.
      *
-     * @param array $metadata
-     *   The secret list metadata.
+     *
+     *     The secret list metadata.
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(array $metadata) : void
     {
         $this->metadata = $metadata;
     }
 
-  /**
-   * @param string $json
-   *
-   * @return static
-   * @throws \Exception
-   */
-    public static function fromJson(string $json): SecretList
+    /**
+     * @return static
+     * @throws Exception
+     */
+    public static function fromJson(string $json) : self
     {
         $data = json_decode($json, true);
         $secrets = [];

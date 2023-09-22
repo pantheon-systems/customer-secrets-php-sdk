@@ -16,7 +16,7 @@ class CustomerSecretsTest extends TestCase
     /**
      * @group short
      */
-    public function testCreateInstance(): void
+    public function testCreateInstance() : void
     {
         $customerSecrets = CustomerSecrets::create(['file' => 'myfile.json']);
         $client = $customerSecrets->getClient();

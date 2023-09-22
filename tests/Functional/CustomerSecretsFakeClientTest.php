@@ -9,7 +9,6 @@ use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotImplemented;
 use PantheonSystems\CustomerSecrets\Secret;
 use PHPUnit\Framework\TestCase;
 
-use function copy;
 use function count;
 use function implode;
 
@@ -23,7 +22,7 @@ class CustomerSecretsFakeClientTest extends TestCase
      */
     protected $fakeClient;
 
-    public function setUp(): void
+    public function setUp() : void
     {
         $this->fakeClient = new CustomerSecretsFakeClient();
     }
@@ -31,7 +30,7 @@ class CustomerSecretsFakeClientTest extends TestCase
     /**
      * @group short
      */
-    public function testSetSecret(): void
+    public function testSetSecret() : void
     {
         $secret = Secret::create([
             'type' => 'env',
@@ -49,7 +48,7 @@ class CustomerSecretsFakeClientTest extends TestCase
     /**
      * @group short
      */
-    public function testDeleteSecret(): void
+    public function testDeleteSecret() : void
     {
         $this->expectException(CustomerSecretsNotImplemented::class);
         $this->expectExceptionMessage('Customer Secrets method not yet implemented.');
@@ -67,7 +66,7 @@ class CustomerSecretsFakeClientTest extends TestCase
         array $scopes,
         array $secretNames,
         string $siteId
-    ): void {
+    ) : void {
         $filepath = __DIR__ . '/../Fixtures/' . $filename;
         $this->fakeClient->setFilepath($filepath);
         $this->fakeClient->fetchSecrets();
