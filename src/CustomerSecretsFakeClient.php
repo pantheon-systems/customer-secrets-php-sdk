@@ -1,23 +1,64 @@
 <?php
 
+/**
+ * @file
+ * Contains \PantheonSystems\CustomerSecrets\CustomerSecretsFakeClient.
+ */
+
 namespace PantheonSystems\CustomerSecrets;
 
+/**
+ *
+ */
+
+define("DEFAULT_TEMP_DIR", getenv('TMPDIR') ?? "/tmp");
+
+/**
+ *
+ */
 class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements CustomerSecretsClientInterface
 {
-    /**
-     * File to store the fake secrets.
-     *
-     * @var string
-     */
+  /*
+   * @var \PantheonSystems\CustomerSecrets\SecretListInterface
+   */
+  /**
+   * @var \PantheonSystems\CustomerSecrets\SecretList
+   */
+    protected SecretList $secretList;
+
+  /**
+   * @param bool $refresh *
+   *
+   * @return mixed
+   */
+    public function getSecrets(bool $refresh = false): array
+    {
+        return $this->secretList->getSecrets();
+    }
+
+  /**
+   * @param mixed $secrets
+   */
+    public function setSecrets(SecretListInterface $secrets): void
+    {
+        $this->secrets = $secrets;
+    }
+
+  /**
+   * File to store the fake secrets.
+   *
+   * @var string
+   */
     protected string $file;
 
-    /**
-     * CustomerSecretsClient constructor.
-     *
-     * @param $args array
-     *   Options for the fake client.
-     *     - file: If not provided, default to value of env var CUSTOMER_SECRETS_FAKE_FILE or /tmp/secrets.json
-     */
+  /**
+   * CustomerSecretsClient constructor.
+   *
+   * @param $args array
+   *   Options for the fake client.
+   *     - file: If not provided, default to value of env var
+   *   CUSTOMER_SECRETS_FAKE_FILE or /tmp/secrets.json
+   */
     public function __construct(array $args = [])
     {
         parent::__construct();
@@ -29,34 +70,39 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
             $file = getenv('CUSTOMER_SECRETS_FAKE_FILE');
         }
         if (!$file) {
-            $file = '/tmp/secrets.json';
+            $file = DEFAULT_TEMP_DIR . '/secrets.json';
         }
         $this->file = $file;
+        $this->secretList = new SecretList();
     }
 
-    /**
-     * Get secrets file.
-     */
+  /**
+   * Get secrets file.
+   */
     public function getFilepath(): string
     {
         return $this->file;
     }
 
-    /**
-     * Fetches secret data for current site.
-     */
-    protected function fetchSecrets(): void
+  /**
+   * @param string $filepath
+   *
+   * @return void
+   */
+    public function setFilepath(string $filepath): void
+    {
+        $this->file = $filepath;
+    }
+
+  /**
+   * Fetches secret data for current site.
+   *
+   * @throws \Exception
+   */
+    public function fetchSecrets(): void
     {
         if (file_exists($this->file)) {
-            $secretResults = json_decode(file_get_contents($this->getFilepath()), true);
-        } else {
-            $secretResults = [];
+            $this->secretList = SecretList::fromJson(file_get_contents($this->getFilepath()));
         }
-        $this->secretList->setMetadata($this->secretListMetadata($secretResults));
-        $secrets = [];
-        foreach ($secretResults['Secrets'] as $name => $secretResult) {
-            $secrets[$name] = new Secret($name, $secretResult['Value'], $secretResult['Type'], $secretResult['Scopes']);
-        }
-        $this->secretList->setSecrets($secrets);
     }
 }

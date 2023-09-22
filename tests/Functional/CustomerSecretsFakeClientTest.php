@@ -59,15 +59,15 @@ class CustomerSecretsFakeClientTest extends TestCase
     public function testFakeClient($filename, $count, $scopes, $secretNames, $siteId): void
     {
         $filepath = __DIR__ . '/../Fixtures/' . $filename;
-        copy($filepath, $this->fakeClient->getFilepath());
-
+        $this->fakeClient->setFilepath($filepath);
+        $this->fakeClient->fetchSecrets();
         $secrets = $this->fakeClient->getSecrets();
         $metadata = $this->fakeClient->getSecretsMetadata();
 
         $this->assertEquals($count, count($secrets), 'Secret count should match the expected ' . $count . ' secrets.');
         $this->assertEquals(
             $scopes,
-            $metadata['Scopes'],
+            $metadata['Scopes'] ?? [],
             'Scopes should match the expected: ' . implode(', ', $scopes) . ' scopes.'
         );
         $this->assertEquals($siteId, $metadata['SiteID'], 'SiteID should match the expected: ' . $siteId . ' site ID.');

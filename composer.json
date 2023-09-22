@@ -16,6 +16,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
+        "php": "^8.0",
         "ext-json": "*"
     },
     "require-dev": {
@@ -31,7 +32,7 @@
             "g1a/composer-test-scenarios": true
         },
         "platform": {
-            "php": "8.0.0"
+            "php": "8.0.26"
         }
     },
     "scripts": {
