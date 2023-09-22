@@ -30,7 +30,7 @@ class CustomerSecretsClientTest extends TestCase
      */
     protected $internalClient;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->secretsClient = new CustomerSecretsClient(['version' => '1', 'testMode' => true]);
 
@@ -45,7 +45,7 @@ class CustomerSecretsClientTest extends TestCase
     /**
      * @group short
      */
-    public function testSetSecret() : void
+    public function testSetSecret(): void
     {
         $secret = Secret::create([
             'type' => 'env',
@@ -63,7 +63,7 @@ class CustomerSecretsClientTest extends TestCase
     /**
      * @group short
      */
-    public function testDeleteSecret() : void
+    public function testDeleteSecret(): void
     {
         $this->expectException(CustomerSecretsNotImplemented::class);
         $this->expectExceptionMessage('Customer Secrets method not yet implemented.');
@@ -75,7 +75,7 @@ class CustomerSecretsClientTest extends TestCase
      * @dataProvider providerData
      * @group short
      */
-    public function testSecretsClient($filename, $count, $scopes, $secretNames, $siteId) : void
+    public function testSecretsClient($filename, $count, $scopes, $secretNames, $siteId): void
     {
         $filepath = __DIR__ . '/../Fixtures/' . $filename;
 

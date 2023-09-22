@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace PantheonSystems\CustomerSecrets;
 
 use Pantheon\Internal\CustomerSecrets\CustomerSecretsClient as InternalClient;
@@ -13,9 +11,9 @@ class CustomerSecretsClient extends CustomerSecretsClientBase implements Custome
     /**
      * Secrets internal client.
      *
-     * @var Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface
+     * @var Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface $internalClient
      */
-    protected CustomerSecretsClientInterface $internalClient;
+    protected InternalClientInterface $internalClient;
 
     /**
      * CustomerSecretsClient constructor.
@@ -38,17 +36,15 @@ class CustomerSecretsClient extends CustomerSecretsClientBase implements Custome
      *
      * @param Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface $internalClient
      */
-    public function setInternalClient(InternalClientInterface $internalClient) : void
+    public function setInternalClient(InternalClientInterface $internalClient): void
     {
         $this->internalClient = $internalClient;
     }
 
     /**
      * Fetches secret data for current site.
-     *
-     * @throws CustomerSecretsNotReady
      */
-    protected function fetchSecrets() : void
+    protected function fetchSecrets(): void
     {
         // Throw exception if internal client is not set.
         if (empty($this->internalClient)) {

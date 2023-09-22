@@ -1,16 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
 namespace PantheonSystems\CustomerSecrets;
-
-use function class_exists;
 
 class CustomerSecrets
 {
-    /**
-     * @var CustomerSecretsClient|CustomerSecretsFakeClient
-     */
     protected $client;
 
     /**
@@ -28,12 +21,12 @@ class CustomerSecrets
     /**
      * Get secrets client.
      */
-    public function getClient() : CustomerSecretsClientInterface
+    public function getClient(): CustomerSecretsClientInterface
     {
         return $this->client;
     }
 
-    public static function create(array $args = []) : self
+    public static function create(array $args = []): CustomerSecrets
     {
         return new CustomerSecrets($args);
     }

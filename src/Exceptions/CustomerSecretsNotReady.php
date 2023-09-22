@@ -1,12 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace PantheonSystems\CustomerSecrets\Exceptions;
 
-use Exception;
-
-class CustomerSecretsNotReady extends Exception
+class CustomerSecretsNotReady extends \Exception
 {
     /**
      * Creates a new CustomerSecretsNotReady object.

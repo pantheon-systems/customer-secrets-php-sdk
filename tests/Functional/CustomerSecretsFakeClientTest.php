@@ -23,7 +23,7 @@ class CustomerSecretsFakeClientTest extends TestCase
      */
     protected $fakeClient;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->fakeClient = new CustomerSecretsFakeClient();
     }
@@ -31,7 +31,7 @@ class CustomerSecretsFakeClientTest extends TestCase
     /**
      * @group short
      */
-    public function testSetSecret() : void
+    public function testSetSecret(): void
     {
         $secret = Secret::create([
             'type' => 'env',
@@ -49,7 +49,7 @@ class CustomerSecretsFakeClientTest extends TestCase
     /**
      * @group short
      */
-    public function testDeleteSecret() : void
+    public function testDeleteSecret(): void
     {
         $this->expectException(CustomerSecretsNotImplemented::class);
         $this->expectExceptionMessage('Customer Secrets method not yet implemented.');
@@ -61,34 +61,52 @@ class CustomerSecretsFakeClientTest extends TestCase
      * @dataProvider providerFakeData
      * @group short
      */
-    public function testFakeClient(string $filename, int $count, array $scopes, array $secretNames, string $siteId) : void
-    {
+    public function testFakeClient(
+        string $filename,
+        int $count,
+        array $scopes,
+        array $secretNames,
+        string $siteId
+    ): void {
         $filepath = __DIR__ . '/../Fixtures/' . $filename;
         $this->fakeClient->setFilepath($filepath);
         $this->fakeClient->fetchSecrets();
         $secrets = $this->fakeClient->getSecrets();
         $metadata = $this->fakeClient->getSecretsMetadata();
 
-        $this->assertEquals($count, count($secrets), 'Secret count should match the expected ' . $count . ' secrets.');
+        $this->assertEquals(
+            $count,
+            count($secrets),
+            'Secret count should match the expected '
+            . $count . ' secrets.'
+        );
         $this->assertEquals(
             $scopes,
             $metadata['Scopes'] ?? [],
-            'Scopes should match the expected: ' . implode(', ', $scopes) . ' scopes.'
+            'Scopes should match the expected: '
+            . implode(', ', $scopes) . ' scopes.'
         );
-        $this->assertEquals($siteId, $metadata['SiteID'], 'SiteID should match the expected: ' . $siteId . ' site ID.');
+        $this->assertEquals(
+            $siteId,
+            $metadata['SiteID'],
+            'SiteID should match the expected: '
+            . $siteId . ' site ID.'
+        );
 
         foreach ($secretNames as $secretName) {
             $this->assertArrayHasKey(
                 $secretName,
                 $secrets,
-                'Secrets should contain the expected secret: ' . $secretName
+                'Secrets should contain the expected secret: '
+                . $secretName
             );
 
             $secret = $this->fakeClient->getSecret($secretName);
             $this->assertEquals(
                 $secretName,
                 $secret->getName(),
-                'Secret name should match the expected: ' . $secretName . ' secret name.'
+                'Secret name should match the expected: '
+                . $secretName . ' secret name.'
             );
         }
     }
