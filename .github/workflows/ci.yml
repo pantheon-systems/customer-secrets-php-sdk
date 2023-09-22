@@ -10,17 +10,6 @@ on:
         required: true
         default: all
 jobs:
-  phpcompatibility:
-    runs-on: ubuntu-latest
-    name: PHP Compatibility
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: PHPCompatibility
-        uses: pantheon-systems/phpcompatibility-action@v1
-        with:
-          test-versions: 7.4-
-
   phpcs:
     runs-on: ubuntu-latest
     name: PHP Coding Standards
@@ -45,10 +34,8 @@ jobs:
         os:
           - ubuntu-latest
         php-version:
-          - php: "7.4"
-            scenario: "php7.4"
           - php: "8.0"
-            scenario: "default"
+            scenario: "php8.1"
           - php: "8.1"
             scenario: "php8.1"
           - php: "8.2"

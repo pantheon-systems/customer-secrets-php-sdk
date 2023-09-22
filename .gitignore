@@ -3,3 +3,4 @@
 .phpunit*
 .idea/
 reports
+/.phpcs-cache
