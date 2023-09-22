@@ -5,6 +5,7 @@ namespace PantheonSystems\CustomerSecrets;
 /**
  *
  */
+
 define("DEFAULT_TEMP_DIR", getenv('TMPDIR') ?? "/tmp");
 
 /**
@@ -12,7 +13,6 @@ define("DEFAULT_TEMP_DIR", getenv('TMPDIR') ?? "/tmp");
  */
 class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements CustomerSecretsClientInterface
 {
-
   /*
    * @var \PantheonSystems\CustomerSecrets\SecretListInterface
    */

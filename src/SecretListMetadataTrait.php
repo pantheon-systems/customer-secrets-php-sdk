@@ -4,7 +4,6 @@ namespace PantheonSystems\CustomerSecrets;
 
 trait SecretListMetadataTrait
 {
-
     protected $metadata;
 
   /**

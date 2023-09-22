@@ -7,7 +7,6 @@ namespace PantheonSystems\CustomerSecrets;
  */
 class SecretList
 {
-
     use SecretListMetadataTrait;
 
     /**
@@ -94,5 +93,4 @@ class SecretList
         $toReturn->setSecretListMetadataFromUntypedArray($data);
         return $toReturn;
     }
-
 }
