@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \PantheonSystems\CustomerSecrets\CustomerSecretsFakeClient.
+ */
+
 namespace PantheonSystems\CustomerSecrets;
 
 /**
