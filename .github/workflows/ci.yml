@@ -21,7 +21,7 @@ jobs:
         with:
           php-version: 8.2
       - name: Install composer
-        run: composer install --no-interaction --prefer-dist
+        run: composer install --no-interaction --prefer-dist -dev
       - name: Run tests
         run: composer cs
 
