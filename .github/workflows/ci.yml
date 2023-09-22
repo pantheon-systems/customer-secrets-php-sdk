@@ -35,7 +35,7 @@ jobs:
           - ubuntu-latest
         php-version:
           - php: "8.0"
-            scenario: "php8.1"
+            scenario: "default"
           - php: "8.1"
             scenario: "php8.1"
           - php: "8.2"
