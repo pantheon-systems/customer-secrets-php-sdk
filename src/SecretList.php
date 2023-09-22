@@ -4,7 +4,6 @@ namespace PantheonSystems\CustomerSecrets;
 
 class SecretList
 {
-
     /**
      * Secrets.
      *

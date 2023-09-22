@@ -12,7 +12,6 @@ use PantheonSystems\CustomerSecrets\CustomerSecrets;
  */
 class CustomerSecretsTest extends TestCase
 {
-
     /**
      * @group short
      */

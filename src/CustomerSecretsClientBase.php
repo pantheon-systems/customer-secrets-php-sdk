@@ -6,7 +6,6 @@ use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotImplemented;
 
 abstract class CustomerSecretsClientBase implements CustomerSecretsClientInterface
 {
-
     /**
      * Secret list.
      *

@@ -32,7 +32,10 @@
     },
     "scripts": {
         "cs": [
-            "vendor/bin/phpcs --standard=PSR2 src tests"
+            "vendor/bin/phpcs --standard=PSR12 src tests"
+        ],
+        "fix": [
+            "vendor/bin/phpcbf --standard=PSR12 src tests"
         ],
         "test": [
           "XDEBUG_MODE=coverage vendor/bin/phpunit --colors=always -c ./phpunit.xml --debug --do-not-cache-result --verbose --stop-on-failure"

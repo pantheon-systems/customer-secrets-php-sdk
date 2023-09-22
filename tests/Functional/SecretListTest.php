@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
  */
 class SecretListTest extends TestCase
 {
-
     /**
      * @group short
      */
