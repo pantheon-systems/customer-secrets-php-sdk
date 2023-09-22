@@ -3,6 +3,7 @@
     "description": "Supporting libraries for customer secrets project",
     "type": "library",
     "license": "MIT",
+    "sort-packages": true,
     "autoload": {
         "psr-4": {
             "PantheonSystems\\CustomerSecrets\\": "src/"
@@ -17,10 +18,10 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.0",
-        "ext-json": "*",
-        "opsway/psr12-strict-coding-standard": "^1.0"
+        "ext-json": "*"
     },
     "require-dev": {
+        "opsway/psr12-strict-coding-standard": "^1.0",
         "phpunit/phpunit": "^9",
         "squizlabs/php_codesniffer": "^3.6",
         "yoast/phpunit-polyfills": "^2.0",
