@@ -4,7 +4,6 @@ namespace PantheonSystems\CustomerSecrets;
 
 interface CustomerSecretsClientInterface
 {
-
     /**
      * Get all secrets for current site.
      */

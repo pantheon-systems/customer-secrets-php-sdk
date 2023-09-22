@@ -4,9 +4,8 @@ namespace PantheonSystems\CustomerSecrets;
 
 class CustomerSecrets
 {
-
     protected $client;
-    
+
     /**
      * Construct.
      */

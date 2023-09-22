@@ -7,7 +7,6 @@ namespace PantheonSystems\CustomerSecrets;
  */
 class Secret
 {
-
     /**
      * Secret name.
      *
