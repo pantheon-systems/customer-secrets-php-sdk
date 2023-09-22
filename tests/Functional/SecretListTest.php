@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PantheonSystems\Tests\Functional;
 
-use PantheonSystems\CustomerSecrets\SecretList;
 use PantheonSystems\CustomerSecrets\Secret;
+use PantheonSystems\CustomerSecrets\SecretList;
 use PHPUnit\Framework\TestCase;
+
+use function count;
 
 /**
  * Tests for SecretList class.
@@ -20,13 +24,13 @@ class SecretListTest extends TestCase
             'type' => 'env',
             'value' => 'bar',
             'scopes' => ['user', 'ic'],
-            'name' => 'foo'
+            'name' => 'foo',
         ]);
         $secret2 = Secret::create([
             'type' => 'composer',
             'value' => 'loremipsum',
             'scopes' => ['user', 'ic'],
-            'name' => 'github-oauth'
+            'name' => 'github-oauth',
         ]);
         $secrets = [
             'foo' => $secret1,
@@ -57,7 +61,7 @@ class SecretListTest extends TestCase
             'type' => 'env',
             'value' => 'bar2',
             'scopes' => ['user', 'ic'],
-            'name' => 'foo2'
+            'name' => 'foo2',
         ]);
 
         $secrets['foo2'] = $newSecret;

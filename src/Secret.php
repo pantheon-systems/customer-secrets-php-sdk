@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PantheonSystems\CustomerSecrets;
 
 /**
@@ -9,43 +11,36 @@ class Secret
 {
     /**
      * Secret name.
-     *
-     * @var string
      */
     protected string $name;
 
     /**
      * Secret value.
      *
-     * @var ?string
+     * @var null|?string
      */
     protected ?string $value;
 
     /**
      * Secret type.
-     *
-     * @var string
      */
     protected string $type;
 
     /**
      * Secret scopes.
-     *
-     * @var array
      */
     protected array $scopes;
 
     /**
      * Creates a new Secret object.
      *
-     * @param string $name
-     *   The name of the secret.
-     * @param string $value
-     *   The value of the secret.
-     * @param string $type
-     *   The type of the secret.
-     * @param array $scopes
-     *   The scopes of the secret.
+     *     The name of the secret.
+     *
+     *     The value of the secret.
+     *
+     *     The type of the secret.
+     *
+     *     The scopes of the secret.
      */
     public function __construct(
         string $name,
@@ -62,10 +57,10 @@ class Secret
     /**
      * Get the name of the secret.
      *
-     * @return string
-     *   The name of the secret.
+     *
+     *     The name of the secret.
      */
-    public function getName(): string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -73,10 +68,10 @@ class Secret
     /**
      * Get the value of the secret.
      *
-     * @return string
-     *   The value of the secret.
+     *
+     *     The value of the secret.
      */
-    public function getValue(): string
+    public function getValue() : string
     {
         return $this->value;
     }
@@ -84,10 +79,10 @@ class Secret
     /**
      * Set the value of the secret.
      *
-     * @param string $value
-     *   The value of the secret.
+     *
+     *     The value of the secret.
      */
-    public function setValue(?string $value): void
+    public function setValue(?string $value) : void
     {
         $this->value = $value;
     }
@@ -95,10 +90,10 @@ class Secret
     /**
      * Get the type of the secret.
      *
-     * @return string
-     *   The type of the secret.
+     *
+     *     The type of the secret.
      */
-    public function getType(): string
+    public function getType() : string
     {
         return $this->type;
     }
@@ -106,10 +101,10 @@ class Secret
     /**
      * Set the type of the secret.
      *
-     * @param string $type
-     *   The type of the secret.
+     *
+     *     The type of the secret.
      */
-    public function setType(string $type): void
+    public function setType(string $type) : void
     {
         $this->type = $type;
     }
@@ -117,10 +112,10 @@ class Secret
     /**
      * Get the scopes of the secret.
      *
-     * @return array
-     *   The scopes of the secret.
+     *
+     *     The scopes of the secret.
      */
-    public function getScopes(): array
+    public function getScopes() : array
     {
         return $this->scopes;
     }
@@ -128,10 +123,10 @@ class Secret
     /**
      * Set the scopes of the secret.
      *
-     * @param array $scopes
-     *   The scopes of the secret.
+     *
+     *     The scopes of the secret.
      */
-    public function setScopes(array $scopes): void
+    public function setScopes(array $scopes) : void
     {
         $this->scopes = $scopes;
     }
@@ -139,20 +134,18 @@ class Secret
     /**
      * Append a scope to the secret.
      *
-     * @param string $scope
-     *   The scope to append.
+     *
+     *     The scope to append.
      */
-    public function addScope(string $scope): void
+    public function addScope(string $scope) : void
     {
         $this->scopes[] = $scope;
     }
 
     /**
-     * @param array $values
-     *
-     * @return \PantheonSystems\CustomerSecrets\Secret
+     * @return Secret
      */
-    public static function create(array $values): Secret
+    public static function create(array $values) : self
     {
         return new static(
             $values['name'],

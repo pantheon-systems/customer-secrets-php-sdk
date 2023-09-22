@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PantheonSystems\CustomerSecrets;
 
 interface CustomerSecretsClientInterface
@@ -7,20 +9,20 @@ interface CustomerSecretsClientInterface
     /**
      * Get all secrets for current site.
      */
-    public function getSecrets(): array;
+    public function getSecrets() : array;
 
     /**
      * Get a specific secret for current site.
      */
-    public function getSecret(string $secretName): ?Secret;
+    public function getSecret(string $secretName) : ?Secret;
 
     /**
      * Create a new secret for current site.
      */
-    public function setSecret(Secret $secret): void;
+    public function setSecret(Secret $secret) : void;
 
     /**
      * Delete a secret for current site.
      */
-    public function deleteSecret(string $secretName): void;
+    public function deleteSecret(string $secretName) : void;
 }

@@ -1,12 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PantheonSystems\Tests\Functional;
 
+use Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface as InternalClientInterface;
+use PantheonSystems\CustomerSecrets\CustomerSecretsClient;
+use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotImplemented;
 use PantheonSystems\CustomerSecrets\Secret;
 use PHPUnit\Framework\TestCase;
-use PantheonSystems\CustomerSecrets\Exceptions\CustomerSecretsNotImplemented;
-use PantheonSystems\CustomerSecrets\CustomerSecretsClient;
-use Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface as InternalClientInterface;
+
+use function count;
+use function file_get_contents;
+use function implode;
+use function json_decode;
 
 /**
  * Tests for CustomerSecretsClientTest class.
@@ -14,23 +21,23 @@ use Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface as Internal
 class CustomerSecretsClientTest extends TestCase
 {
     /**
-     * @var \PantheonSystems\CustomerSecrets\CustomerSecretsClient
+     * @var CustomerSecretsClient
      */
     protected $secretsClient;
 
     /**
-     * @var \Pantheon\Internal\CustomerSecrets\CustomerSecretsClientInterface
+     * @var InternalClientInterface
      */
     protected $internalClient;
 
-    public function setUp(): void
+    public function setUp() : void
     {
         $this->secretsClient = new CustomerSecretsClient(['version' => '1', 'testMode' => true]);
 
         $this->internalClient = $this->getMockBuilder(InternalClientInterface::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['get'])
-            ->getMock();
+                                     ->disableOriginalConstructor()
+                                     ->setMethods(['get'])
+                                     ->getMock();
 
         $this->secretsClient->setInternalClient($this->internalClient);
     }
@@ -38,13 +45,13 @@ class CustomerSecretsClientTest extends TestCase
     /**
      * @group short
      */
-    public function testSetSecret(): void
+    public function testSetSecret() : void
     {
         $secret = Secret::create([
             'type' => 'env',
             'value' => 'bar',
             'scopes' => ['user', 'ic'],
-            'name' => 'foo'
+            'name' => 'foo',
         ]);
 
         $this->expectException(CustomerSecretsNotImplemented::class);
@@ -56,7 +63,7 @@ class CustomerSecretsClientTest extends TestCase
     /**
      * @group short
      */
-    public function testDeleteSecret(): void
+    public function testDeleteSecret() : void
     {
         $this->expectException(CustomerSecretsNotImplemented::class);
         $this->expectExceptionMessage('Customer Secrets method not yet implemented.');
@@ -66,17 +73,16 @@ class CustomerSecretsClientTest extends TestCase
 
     /**
      * @dataProvider providerData
-     *
      * @group short
      */
-    public function testSecretsClient($filename, $count, $scopes, $secretNames, $siteId): void
+    public function testSecretsClient($filename, $count, $scopes, $secretNames, $siteId) : void
     {
         $filepath = __DIR__ . '/../Fixtures/' . $filename;
 
         $secrets = json_decode(file_get_contents($filepath), true);
         $this->internalClient->expects($this->any())
-            ->method('get')
-            ->willReturn($secrets);
+                             ->method('get')
+                             ->willReturn($secrets);
 
         $secrets = $this->secretsClient->getSecrets();
         $metadata = $this->secretsClient->getSecretsMetadata();
