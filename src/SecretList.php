@@ -2,8 +2,14 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
+/**
+ *
+ */
 class SecretList
 {
+
+    use SecretListMetadataTrait;
+
     /**
      * Secrets.
      *
@@ -11,12 +17,6 @@ class SecretList
      */
     protected array $secrets;
 
-    /**
-     * Secrets metadata.
-     *
-     * @var array
-     */
-    protected array $metadata;
 
     /**
      * Creates a new SecretList object.
@@ -75,4 +75,24 @@ class SecretList
     {
         $this->metadata = $metadata;
     }
+
+  /**
+   * @param string $json
+   *
+   * @return static
+   * @throws \Exception
+   */
+    public static function fromJson(string $json): SecretList
+    {
+        $data = json_decode($json, true);
+        $secrets = [];
+        $metadata = [];
+        foreach ($data['Secrets'] as $name => $secretResult) {
+            $secrets[$name] = new Secret($name, $secretResult['Value'], $secretResult['Type'], $secretResult['Scopes']);
+        }
+        $toReturn = new static($secrets);
+        $toReturn->setSecretListMetadataFromUntypedArray($data);
+        return $toReturn;
+    }
+
 }
