@@ -10,7 +10,6 @@ on:
         required: true
         default: all
 jobs:
-
   phpcs:
     runs-on: ubuntu-latest
     name: PHP Coding Standards
