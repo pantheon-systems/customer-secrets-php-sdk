@@ -92,6 +92,7 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
     public function setFilepath(string $filepath): void
     {
         $this->file = $filepath;
+        $this->fetchSecrets();
     }
 
   /**
@@ -99,7 +100,7 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
    *
    * @throws \Exception
    */
-    public function fetchSecrets(): void
+    protected function fetchSecrets(): void
     {
         if (file_exists($this->file)) {
             $this->secretList = SecretList::fromJson(file_get_contents($this->getFilepath()));

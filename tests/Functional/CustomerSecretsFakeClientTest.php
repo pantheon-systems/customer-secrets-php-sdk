@@ -60,7 +60,6 @@ class CustomerSecretsFakeClientTest extends TestCase
     {
         $filepath = __DIR__ . '/../Fixtures/' . $filename;
         $this->fakeClient->setFilepath($filepath);
-        $this->fakeClient->fetchSecrets();
         $secrets = $this->fakeClient->getSecrets();
         $metadata = $this->fakeClient->getSecretsMetadata();
 
