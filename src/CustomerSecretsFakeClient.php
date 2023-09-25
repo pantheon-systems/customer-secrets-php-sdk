@@ -7,6 +7,8 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
+use Exception;
+
 /**
  *
  */
@@ -84,11 +86,12 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
         return $this->file;
     }
 
-  /**
-   * @param string $filepath
-   *
-   * @return void
-   */
+    /**
+     * @param string $filepath
+     *
+     * @return void
+     * @throws Exception
+     */
     public function setFilepath(string $filepath): void
     {
         $this->file = $filepath;
@@ -100,7 +103,7 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
   /**
    * Fetches secret data for current site.
    *
-   * @throws \Exception
+   * @throws Exception
    */
     protected function fetchSecrets(): void
     {
