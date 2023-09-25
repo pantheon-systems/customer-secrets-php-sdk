@@ -7,6 +7,8 @@
 
 namespace PantheonSystems\CustomerSecrets;
 
+use Exception;
+
 /**
  *
  */
@@ -84,22 +86,26 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
         return $this->file;
     }
 
-  /**
-   * @param string $filepath
-   *
-   * @return void
-   */
+    /**
+     * @param string $filepath
+     *
+     * @return void
+     * @throws Exception
+     */
     public function setFilepath(string $filepath): void
     {
         $this->file = $filepath;
+        // The reason this exists, is because the secret values need to be populated
+        // once the value is set. This is a bit of a hack, but it works.
+        $this->fetchSecrets();
     }
 
   /**
    * Fetches secret data for current site.
    *
-   * @throws \Exception
+   * @throws Exception
    */
-    public function fetchSecrets(): void
+    protected function fetchSecrets(): void
     {
         if (file_exists($this->file)) {
             $this->secretList = SecretList::fromJson(file_get_contents($this->getFilepath()));
