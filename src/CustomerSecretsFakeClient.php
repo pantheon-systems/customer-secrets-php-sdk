@@ -92,6 +92,8 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
     public function setFilepath(string $filepath): void
     {
         $this->file = $filepath;
+        // The reason this exists, is because the secret values need to be populated
+        // once the value is set. This is a bit of a hack, but it works.
         $this->fetchSecrets();
     }
 
