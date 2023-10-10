@@ -87,8 +87,10 @@ class SecretList
         $secrets = [];
         $metadata = [];
         foreach ($data['Secrets'] as $name => $secretResult) {
-            $secretValue = empty($secretResult['Value']) ?
-                $secretResult['OrgValues']['default'] : $secretResult['Value'];
+            $secretValue = $secretResult['Value'];
+            if (empty($secretValue && !empty($secretResult['OrgValues']['default']))) {
+                $secretValue = $secretResult['OrgValues']['default'];
+            }
             $secrets[$name] = new Secret($name, $secretValue, $secretResult['Type'], $secretResult['Scopes']);
         }
         $toReturn = new static($secrets);
