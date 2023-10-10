@@ -87,7 +87,8 @@ class SecretList
         $secrets = [];
         $metadata = [];
         foreach ($data['Secrets'] as $name => $secretResult) {
-            $secrets[$name] = new Secret($name, $secretResult['Value'], $secretResult['Type'], $secretResult['Scopes']);
+            $secretValue = empty($secretResult['Value']) ? $secretResult['OrgValues']['default'] : $secretResult['Value'];
+            $secrets[$name] = new Secret($name, $secretValue, $secretResult['Type'], $secretResult['Scopes']);
         }
         $toReturn = new static($secrets);
         $toReturn->setSecretListMetadataFromUntypedArray($data);
