@@ -74,8 +74,7 @@ class CustomerSecretsFakeClient extends CustomerSecretsClientBase implements Cus
         if (!$file) {
             $file = DEFAULT_TEMP_DIR . '/secrets.json';
         }
-        $this->file = $file;
-        $this->secretList = new SecretList();
+        $this->setFilePath($file);
     }
 
   /**
