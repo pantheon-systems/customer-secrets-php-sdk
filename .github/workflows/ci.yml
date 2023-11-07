@@ -60,9 +60,9 @@ jobs:
           php-version: ${{ matrix.php-version.php }}
           coverage: pcov
           ini-values: ${{ matrix.php-ini-values }}
+      - name: Install composer
+        run: composer update --no-interaction --prefer-lowest
       - name: Install Composer Dependencies for current scenario
         run: composer scenario ${{ matrix.php-version.scenario }}
-      - name: Install composer
-        run: composer install --no-interaction --prefer-dist
       - name: Functional Tests
         run: composer test
