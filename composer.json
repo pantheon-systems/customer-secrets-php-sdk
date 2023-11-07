@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^8.0",
+        "php": "^7.4",
         "ext-json": "*"
     },
     "require-dev": {
@@ -24,7 +24,8 @@
         "squizlabs/php_codesniffer": "^3.6",
         "yoast/phpunit-polyfills": "^2.0",
         "g1a/composer-test-scenarios": "^3.2",
-        "symfony/polyfill": "^1.28"
+        "symfony/polyfill": "^1.28",
+        "phpstan/phpstan": "^1.10"
     },
     "config": {
         "allow-plugins": {
@@ -32,7 +33,7 @@
             "g1a/composer-test-scenarios": true
         },
         "platform": {
-            "php": "8.0.26"
+            "php": "7.4.33"
         }
     },
     "scripts": {
@@ -59,6 +60,13 @@
                 "config": {
                     "platform": {
                         "php": "8.2.0"
+                    }
+                }
+            },
+            "php7.4": {
+                "config": {
+                    "platform": {
+                        "php": "7.4.33"
                     }
                 }
             }
