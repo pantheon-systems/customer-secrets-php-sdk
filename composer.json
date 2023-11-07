@@ -16,7 +16,6 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.4",
         "ext-json": "*"
     },
     "require-dev": {
@@ -31,9 +30,6 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "g1a/composer-test-scenarios": true
-        },
-        "platform": {
-            "php": "7.4.33"
         }
     },
     "scripts": {
