@@ -60,6 +60,8 @@ jobs:
           php-version: ${{ matrix.php-version.php }}
           coverage: pcov
           ini-values: ${{ matrix.php-ini-values }}
+      - name: Remove Vendor folder
+        run: rm -Rf vendor
       - name: Install composer
         run: composer install --no-interaction --prefer-dist
       - name: Install Composer Dependencies for current scenario
