@@ -22,7 +22,7 @@
         "phpunit/phpunit": "^9",
         "squizlabs/php_codesniffer": "^3.6",
         "yoast/phpunit-polyfills": "^2.0",
-        "g1a/composer-test-scenarios": "^3.2",
+        "g1a/composer-test-scenarios": "^3.2.2",
         "symfony/polyfill": "^1.28"
     },
     "config": {
