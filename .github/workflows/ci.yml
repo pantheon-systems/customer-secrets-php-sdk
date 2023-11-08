@@ -34,6 +34,8 @@ jobs:
         os:
           - ubuntu-latest
         php-version:
+          - php: "7.4"
+            scenario: "php7.4"
           - php: "8.0"
             scenario: "default"
           - php: "8.1"
@@ -59,7 +61,7 @@ jobs:
           coverage: pcov
           ini-values: ${{ matrix.php-ini-values }}
       - name: Install composer
-        run: composer install --no-interaction --prefer-dist
+        run: composer update --no-interaction --prefer-lowest
       - name: Install Composer Dependencies for current scenario
         run: composer scenario ${{ matrix.php-version.scenario }}
       - name: Functional Tests
