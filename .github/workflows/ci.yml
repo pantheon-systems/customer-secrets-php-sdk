@@ -63,6 +63,6 @@ jobs:
       - name: Install composer
         run: composer update --no-interaction --prefer-lowest
       - name: Install Composer Dependencies for current scenario
-        run: composer scenario ${{ matrix.php-version.scenario }} {{ matrix.dependencies}}
+        run: composer scenario ${{ matrix.php-version.scenario }} ${{ matrix.dependencies }}
       - name: Functional Tests
         run: composer test
