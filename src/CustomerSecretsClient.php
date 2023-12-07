@@ -54,8 +54,10 @@ class CustomerSecretsClient extends CustomerSecretsClientBase implements Custome
         $secretResults = $this->internalClient->get();
         $this->secretList->setMetadata($this->secretListMetadata($secretResults));
         $secrets = [];
-        foreach ($secretResults['Secrets'] as $name => $secretResult) {
-            $secrets[$name] = new Secret($name, $secretResult['Value'], $secretResult['Type'], $secretResult['Scopes']);
+        if (isset($secretResults['Secrets'])) {
+            foreach ($secretResults['Secrets'] as $name => $secretResult) {
+                $secrets[$name] = new Secret($name, $secretResult['Value'], $secretResult['Type'], $secretResult['Scopes']);
+            }
         }
         $this->secretList->setSecrets($secrets);
     }
