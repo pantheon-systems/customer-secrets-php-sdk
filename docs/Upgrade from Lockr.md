@@ -10,13 +10,13 @@ your secrets from Lockr to Pantheon Secrets.
 
 Before you begin, you will need the following:
 
-- A Pantheon Site with a working connection to Lockr.
+- A Pantheon Site with a working connection to Lockr with 
+- PHP version 7.4 or later on the running site environment
 - A Pantheon account with the necessary permissions to create and manage 
   secrets.
 - A Lockr account with the necessary permissions to access and manage 
   secrets.
 - PHP 7.4 or later installed on your local machine.
-- Composer installed on your local machine.
 - The `terminus` CLI installed on your local machine.
 - The Customer Secrets Manager plugin for Terminus installed on your local 
   machine.
@@ -58,18 +58,48 @@ echo $KEYS_ARRAY
 for key in $KEYS_ARRAY
 do
   # Get the value of the key using the PHP EVAL command
-  PHP="\Drupal::service('key.repository')->getKey('${key}')->getKeyValue()"
+  VALUE_PHP="\Drupal::service('key.repository')->getKey('${key}')->getKeyValue()"
   # String together a command to use terminus to get the value of the key
-  VALUE=$(terminus drush $SITENAME.$ENV --  ev "echo $PHP")
-  # Set a site secret with the key and value
-  # using the terminus plugin for pantheon secrets
-  SUCCESS=$(terminus "secret:site:set" "${SITENAME}" "${key}" "${VALUE}" --scope=$DEFAULT_SCOPE --type=$DEFAULT_TYPE)
+  VALUE=$(terminus drush $SITENAME.$ENV --  ev "echo $VALUE_PHP")
   if [ $? -ne 0 ]; then
-    echo "Key: $key Failed to migrate: $SUCCESS"
+    echo "Key: $key Failed to get value: $VALUE"
     exit 1
   fi
+
+
+  # Set a site secret with the key and value
+  # using the terminus plugin for pantheon secrets
+  TYPE_PHP="\Drupal::service('key.repository')->getKey('${key}')->toArray()['key_type']"
+  # String together a command to use terminus to get the value of the key
+  TYPE=$(terminus drush $SITENAME.$ENV --  ev "echo $TYPE_PHP")
+  if [ $? -ne 0 ]; then
+    echo "Key: $key Failed to get type: $TYPE"
+    exit 1
+  fi
+
+  ## TODO: migrate the key type to the new version of the key.
+
+  ## if type is empty use the $DEFAULT_TYPE
+  if [ -z "$TYPE" ]; then
+    TYPE=$DEFAULT_TYPE
+  fi
+
+
+  ## set the value of the secret in PantheonSecrets
+  SUCCESS=$(terminus "secret:site:set" "${SITENAME}" "${key}" "${VALUE}" --scope="${DEFAULT_SCOPE}" --type="env")
+  if [ $? -ne 0 ]; then
+    echo "Key: $key Failed to set value in Pantheon Secrets: $SUCCESS"
+    exit 1
+  fi
+
+
   echo "Key: $key Migrated"
 done
+
+# Sync the secrets available to the key module to the ones available in Pantheon Secrets
+# With a type of "runtime" and a scope of "env"
+terminus drush $SITENAME.$ENV -- pantheon-secrets:sync
+
 ```
 
 
