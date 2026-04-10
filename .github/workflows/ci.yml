@@ -1,4 +1,8 @@
 name: CI Tests
+
+permissions:
+  contents: read
+
 on:
   push:
   schedule:
