@@ -1869,24 +1869,25 @@
         },
         {
             "name": "symfony/polyfill",
-            "version": "v1.28.0",
+            "version": "v1.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill.git",
-                "reference": "33def419104fb3cf14be4e8638683eb9845c2522"
+                "reference": "09e53d15109121636a416310ea0d510bd292c463"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill/zipball/33def419104fb3cf14be4e8638683eb9845c2522",
-                "reference": "33def419104fb3cf14be4e8638683eb9845c2522",
+                "url": "https://api.github.com/repos/symfony/polyfill/zipball/09e53d15109121636a416310ea0d510bd292c463",
+                "reference": "09e53d15109121636a416310ea0d510bd292c463",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "replace": {
                 "symfony/polyfill-apcu": "self.version",
                 "symfony/polyfill-ctype": "self.version",
+                "symfony/polyfill-deepclone": "self.version",
                 "symfony/polyfill-iconv": "self.version",
                 "symfony/polyfill-intl-grapheme": "self.version",
                 "symfony/polyfill-intl-icu": "self.version",
@@ -1894,21 +1895,22 @@
                 "symfony/polyfill-intl-messageformatter": "self.version",
                 "symfony/polyfill-intl-normalizer": "self.version",
                 "symfony/polyfill-mbstring": "self.version",
-                "symfony/polyfill-php72": "self.version",
                 "symfony/polyfill-php73": "self.version",
                 "symfony/polyfill-php74": "self.version",
                 "symfony/polyfill-php80": "self.version",
                 "symfony/polyfill-php81": "self.version",
                 "symfony/polyfill-php82": "self.version",
                 "symfony/polyfill-php83": "self.version",
+                "symfony/polyfill-php84": "self.version",
+                "symfony/polyfill-php85": "self.version",
+                "symfony/polyfill-php86": "self.version",
                 "symfony/polyfill-util": "self.version",
-                "symfony/polyfill-uuid": "self.version",
-                "symfony/polyfill-xml": "self.version"
+                "symfony/polyfill-uuid": "self.version"
             },
             "require-dev": {
-                "symfony/intl": "^4.4|^5.0|^6.0",
-                "symfony/phpunit-bridge": "^5.3|^6.0",
-                "symfony/var-dumper": "^4.4|^5.1|^6.0"
+                "symfony/intl": "^5.4|^6.4",
+                "symfony/phpunit-bridge": "^6.4",
+                "symfony/var-dumper": "^5.4|^6.4"
             },
             "type": "library",
             "autoload": {
@@ -1916,6 +1918,7 @@
                     "src/bootstrap.php",
                     "src/Apcu/bootstrap.php",
                     "src/Ctype/bootstrap.php",
+                    "src/DeepClone/bootstrap.php",
                     "src/Uuid/bootstrap.php",
                     "src/Iconv/bootstrap.php",
                     "src/Intl/Grapheme/bootstrap.php",
@@ -1929,9 +1932,13 @@
                     "Symfony\\Polyfill\\": "src/"
                 },
                 "classmap": [
+                    "src/DeepClone/Resources/stubs",
                     "src/Intl/Icu/Resources/stubs",
                     "src/Intl/MessageFormatter/Resources/stubs",
                     "src/Intl/Normalizer/Resources/stubs",
+                    "src/Php86/Resources/stubs",
+                    "src/Php85/Resources/stubs",
+                    "src/Php84/Resources/stubs",
                     "src/Php83/Resources/stubs",
                     "src/Php82/Resources/stubs",
                     "src/Php81/Resources/stubs",
@@ -1958,12 +1965,13 @@
             "keywords": [
                 "compat",
                 "compatibility",
+                "dev",
                 "polyfill",
                 "shim"
             ],
             "support": {
                 "issues": "https://github.com/symfony/polyfill/issues",
-                "source": "https://github.com/symfony/polyfill/tree/v1.28.0"
+                "source": "https://github.com/symfony/polyfill/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -1975,11 +1983,15 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-25T17:27:34+00:00"
+            "time": "2026-05-26T13:03:06+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -2105,5 +2117,5 @@
     "platform-overrides": {
         "php": "8.0.26"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
