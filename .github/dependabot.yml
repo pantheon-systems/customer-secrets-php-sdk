@@ -1,0 +1,35 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "pantheon-systems/*"
+
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      composer_packages:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "composer"
+    directory: "/.scenarios.lock/php8.1"
+    schedule:
+      interval: "weekly"
+    groups:
+      composer_packages:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "composer"
+    directory: "/.scenarios.lock/php8.2"
+    schedule:
+      interval: "weekly"
+    groups:
+      composer_packages:
+        patterns:
+          - "*"
