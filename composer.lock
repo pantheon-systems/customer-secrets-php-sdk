@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46e57aac3a91e5a6b8a358631f5a169b",
+    "content-hash": "53566ac4b8fc4558cd251655dbf034de",
     "packages": [],
     "packages-dev": [
         {
@@ -79,16 +79,16 @@
         },
         {
             "name": "g1a/composer-test-scenarios",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/g1a/composer-test-scenarios.git",
-                "reference": "3566ed6e525874b54f04f35b4d40a19c809114ab"
+                "reference": "4f90128e0c1e897c8d3e43a0a88ada221721e7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/g1a/composer-test-scenarios/zipball/3566ed6e525874b54f04f35b4d40a19c809114ab",
-                "reference": "3566ed6e525874b54f04f35b4d40a19c809114ab",
+                "url": "https://api.github.com/repos/g1a/composer-test-scenarios/zipball/4f90128e0c1e897c8d3e43a0a88ada221721e7f4",
+                "reference": "4f90128e0c1e897c8d3e43a0a88ada221721e7f4",
                 "shasum": ""
             },
             "require": {
@@ -129,9 +129,9 @@
             "description": "Useful scripts for testing multiple sets of Composer dependencies.",
             "support": {
                 "issues": "https://github.com/g1a/composer-test-scenarios/issues",
-                "source": "https://github.com/g1a/composer-test-scenarios/tree/3.2.1"
+                "source": "https://github.com/g1a/composer-test-scenarios/tree/3.2.2"
             },
-            "time": "2022-11-04T16:05:56+00:00"
+            "time": "2023-11-08T08:38:37+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -195,20 +195,19 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.7.0",
+            "version": "v5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "dca41cd15c2ac9d055ad70dbfd011130757d1f82"
+                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/dca41cd15c2ac9d055ad70dbfd011130757d1f82",
-                "reference": "dca41cd15c2ac9d055ad70dbfd011130757d1f82",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
+                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
                 "shasum": ""
             },
             "require": {
-                "ext-ctype": "*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "php": ">=7.4"
@@ -247,9 +246,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.7.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.8.0"
             },
-            "time": "2025-12-06T11:56:16+00:00"
+            "time": "2026-07-04T14:30:18+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -690,25 +689,25 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.33",
+            "version": "9.6.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "fea06253ecc0a32faf787bd31b261f56f351d049"
+                "reference": "0edba2f3a0c48df3553cb9b640810b30df60302b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fea06253ecc0a32faf787bd31b261f56f351d049",
-                "reference": "fea06253ecc0a32faf787bd31b261f56f351d049",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0edba2f3a0c48df3553cb9b640810b30df60302b",
+                "reference": "0edba2f3a0c48df3553cb9b640810b30df60302b",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.5.0 || ^2",
                 "ext-dom": "*",
+                "ext-filter": "*",
                 "ext-json": "*",
                 "ext-libxml": "*",
                 "ext-mbstring": "*",
-                "ext-xml": "*",
                 "ext-xmlwriter": "*",
                 "myclabs/deep-copy": "^1.13.4",
                 "phar-io/manifest": "^2.0.4",
@@ -773,31 +772,15 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.33"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.35"
             },
             "funding": [
                 {
-                    "url": "https://phpunit.de/sponsors.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                },
-                {
-                    "url": "https://liberapay.com/sebastianbergmann",
-                    "type": "liberapay"
-                },
-                {
-                    "url": "https://thanks.dev/u/gh/sebastianbergmann",
-                    "type": "thanks_dev"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpunit/phpunit",
-                    "type": "tidelift"
+                    "url": "https://phpunit.de/sponsoring.html",
+                    "type": "other"
                 }
             ],
-            "time": "2026-01-27T05:25:09+00:00"
+            "time": "2026-07-06T14:48:07+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -1812,37 +1795,32 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.7.2",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879"
+                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
+                "reference": "0525c73950de35ded110cffafb9892946d7771b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ed8e00df0a83aa96acf703f8c2979ff33341f879",
-                "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/0525c73950de35ded110cffafb9892946d7771b5",
+                "reference": "0525c73950de35ded110cffafb9892946d7771b5",
                 "shasum": ""
             },
             "require": {
                 "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
-                "php": ">=5.4.0"
+                "php": ">=7.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "phpunit/phpunit": "^8.4.0 || ^9.3.4 || ^10.5.32 || 11.3.3 - 11.5.28 || ^11.5.31"
             },
             "bin": [
-                "bin/phpcs",
-                "bin/phpcbf"
+                "bin/phpcbf",
+                "bin/phpcs"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -1850,35 +1828,62 @@
             "authors": [
                 {
                     "name": "Greg Sherwood",
-                    "role": "lead"
+                    "role": "Former lead"
+                },
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "role": "Current lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors"
                 }
             ],
-            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+            "description": "PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
             "keywords": [
                 "phpcs",
                 "standards",
                 "static analysis"
             ],
             "support": {
-                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
-                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
-                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+                "issues": "https://github.com/PHPCSStandards/PHP_CodeSniffer/issues",
+                "security": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/policy",
+                "source": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
+                "wiki": "https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki"
             },
-            "time": "2023-02-22T23:07:41+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://thanks.dev/u/gh/phpcsstandards",
+                    "type": "thanks_dev"
+                }
+            ],
+            "time": "2025-11-10T16:43:36+00:00"
         },
         {
             "name": "symfony/polyfill",
-            "version": "v1.40.0",
+            "version": "v1.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill.git",
-                "reference": "a9a8687879dfea232e90d38ba949f65c3ece4456"
+                "reference": "d2ed01779ea693f038c307b354b731cc6238cd87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill/zipball/a9a8687879dfea232e90d38ba949f65c3ece4456",
-                "reference": "a9a8687879dfea232e90d38ba949f65c3ece4456",
+                "url": "https://api.github.com/repos/symfony/polyfill/zipball/d2ed01779ea693f038c307b354b731cc6238cd87",
+                "reference": "d2ed01779ea693f038c307b354b731cc6238cd87",
                 "shasum": ""
             },
             "require": {
@@ -1894,6 +1899,7 @@
                 "symfony/polyfill-intl-idn": "self.version",
                 "symfony/polyfill-intl-messageformatter": "self.version",
                 "symfony/polyfill-intl-normalizer": "self.version",
+                "symfony/polyfill-io-poll": "self.version",
                 "symfony/polyfill-mbstring": "self.version",
                 "symfony/polyfill-php73": "self.version",
                 "symfony/polyfill-php74": "self.version",
@@ -1908,7 +1914,7 @@
                 "symfony/polyfill-uuid": "self.version"
             },
             "require-dev": {
-                "symfony/intl": "^5.4|^6.4",
+                "symfony/intl": "^6.4",
                 "symfony/phpunit-bridge": "^6.4",
                 "symfony/var-dumper": "^5.4|^6.4"
             },
@@ -1936,6 +1942,7 @@
                     "src/Intl/Icu/Resources/stubs",
                     "src/Intl/MessageFormatter/Resources/stubs",
                     "src/Intl/Normalizer/Resources/stubs",
+                    "src/Io/Poll/Resources/stubs",
                     "src/Php86/Resources/stubs",
                     "src/Php85/Resources/stubs",
                     "src/Php84/Resources/stubs",
@@ -1971,7 +1978,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/polyfill/issues",
-                "source": "https://github.com/symfony/polyfill/tree/v1.40.0"
+                "source": "https://github.com/symfony/polyfill/tree/v1.41.0"
             },
             "funding": [
                 {
@@ -1991,7 +1998,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-12T07:27:17+00:00"
+            "time": "2026-07-28T08:40:59+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -2045,29 +2052,31 @@
         },
         {
             "name": "yoast/phpunit-polyfills",
-            "version": "2.0.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/PHPUnit-Polyfills.git",
-                "reference": "c758753e8f9dac251fed396a73c8305af3f17922"
+                "reference": "134921bfca9b02d8f374c48381451da1d98402f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/PHPUnit-Polyfills/zipball/c758753e8f9dac251fed396a73c8305af3f17922",
-                "reference": "c758753e8f9dac251fed396a73c8305af3f17922",
+                "url": "https://api.github.com/repos/Yoast/PHPUnit-Polyfills/zipball/134921bfca9b02d8f374c48381451da1d98402f9",
+                "reference": "134921bfca9b02d8f374c48381451da1d98402f9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6",
-                "phpunit/phpunit": "^5.7.21 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0"
+                "php": ">=7.1",
+                "phpunit/phpunit": "^7.5 || ^8.0 || ^9.0 || ^11.0 || ^12.0"
             },
             "require-dev": {
-                "yoast/yoastcs": "^2.3.0"
+                "php-parallel-lint/php-console-highlighter": "^1.0.0",
+                "php-parallel-lint/php-parallel-lint": "^1.4.0",
+                "yoast/yoastcs": "^3.1.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.x-dev"
+                    "dev-main": "4.x-dev"
                 }
             },
             "autoload": {
@@ -2099,9 +2108,10 @@
             ],
             "support": {
                 "issues": "https://github.com/Yoast/PHPUnit-Polyfills/issues",
+                "security": "https://github.com/Yoast/PHPUnit-Polyfills/security/policy",
                 "source": "https://github.com/Yoast/PHPUnit-Polyfills"
             },
-            "time": "2023-06-06T20:28:24+00:00"
+            "time": "2025-02-09T18:58:54+00:00"
         }
     ],
     "aliases": [],
@@ -2117,5 +2127,5 @@
     "platform-overrides": {
         "php": "8.0.26"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
