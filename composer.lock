@@ -1795,19 +1795,20 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "4.0.1",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "0525c73950de35ded110cffafb9892946d7771b5"
+                "reference": "bbdc3d0532623e21838b7041a4364383a8126f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/0525c73950de35ded110cffafb9892946d7771b5",
-                "reference": "0525c73950de35ded110cffafb9892946d7771b5",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/bbdc3d0532623e21838b7041a4364383a8126f96",
+                "reference": "bbdc3d0532623e21838b7041a4364383a8126f96",
                 "shasum": ""
             },
             "require": {
+                "ext-libxml": "*",
                 "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
@@ -1815,6 +1816,10 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.4.0 || ^9.3.4 || ^10.5.32 || 11.3.3 - 11.5.28 || ^11.5.31"
+            },
+            "suggest": {
+                "ext-iconv": "For accurate character length calculation when the checked files contain multi-byte characters.",
+                "ext-pcntl": "For parallel processing support via the --parallel CLI option."
             },
             "bin": [
                 "bin/phpcbf",
@@ -1870,20 +1875,20 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-11-10T16:43:36+00:00"
+            "time": "2026-08-06T02:45:27+00:00"
         },
         {
             "name": "symfony/polyfill",
-            "version": "v1.41.0",
+            "version": "v1.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill.git",
-                "reference": "d2ed01779ea693f038c307b354b731cc6238cd87"
+                "reference": "8ad2a47cbde20d77fecbcae136eba323fda5e7cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill/zipball/d2ed01779ea693f038c307b354b731cc6238cd87",
-                "reference": "d2ed01779ea693f038c307b354b731cc6238cd87",
+                "url": "https://api.github.com/repos/symfony/polyfill/zipball/8ad2a47cbde20d77fecbcae136eba323fda5e7cc",
+                "reference": "8ad2a47cbde20d77fecbcae136eba323fda5e7cc",
                 "shasum": ""
             },
             "require": {
@@ -1910,6 +1915,7 @@
                 "symfony/polyfill-php84": "self.version",
                 "symfony/polyfill-php85": "self.version",
                 "symfony/polyfill-php86": "self.version",
+                "symfony/polyfill-time": "self.version",
                 "symfony/polyfill-util": "self.version",
                 "symfony/polyfill-uuid": "self.version"
             },
@@ -1943,6 +1949,7 @@
                     "src/Intl/MessageFormatter/Resources/stubs",
                     "src/Intl/Normalizer/Resources/stubs",
                     "src/Io/Poll/Resources/stubs",
+                    "src/Time/Resources/stubs",
                     "src/Php86/Resources/stubs",
                     "src/Php85/Resources/stubs",
                     "src/Php84/Resources/stubs",
@@ -1978,7 +1985,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/polyfill/issues",
-                "source": "https://github.com/symfony/polyfill/tree/v1.41.0"
+                "source": "https://github.com/symfony/polyfill/tree/v1.42.0"
             },
             "funding": [
                 {
@@ -1998,7 +2005,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-28T08:40:59+00:00"
+            "time": "2026-08-24T11:39:59+00:00"
         },
         {
             "name": "theseer/tokenizer",
