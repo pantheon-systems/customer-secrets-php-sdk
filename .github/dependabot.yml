@@ -1,11 +1,12 @@
+# This file is managed by github-terraform. Manual changes will be overwritten.
+# To modify it, edit orgs/pantheon-systems/files/dependabot/custom/customer-secrets-php-sdk.yml
+# in https://github.com/pantheon-systems/github-terraform
 version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-name: "pantheon-systems/*"
 
   - package-ecosystem: "composer"
     directory: "/"
