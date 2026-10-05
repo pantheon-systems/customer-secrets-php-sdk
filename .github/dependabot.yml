@@ -2,35 +2,35 @@
 # To modify it, edit orgs/pantheon-systems/files/dependabot/custom/customer-secrets-php-sdk.yml
 # in https://github.com/pantheon-systems/github-terraform
 version: 2
+# Every version update lands in one weekly PR (multi-ecosystem group `dependencies`).
+# Security updates are not part of the group; each opens as its own PR.
+multi-ecosystem-groups:
+  dependencies:
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "chore"
+      include: "scope"
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
-    schedule:
-      interval: "weekly"
+    patterns: ["*"]
+    multi-ecosystem-group: dependencies
+
 
   - package-ecosystem: "composer"
     directory: "/"
-    schedule:
-      interval: "weekly"
-    groups:
-      composer_packages:
-        patterns:
-          - "*"
+    patterns: ["*"]
+    multi-ecosystem-group: dependencies
+
 
   - package-ecosystem: "composer"
     directory: "/.scenarios.lock/php8.1"
-    schedule:
-      interval: "weekly"
-    groups:
-      composer_packages:
-        patterns:
-          - "*"
+    patterns: ["*"]
+    multi-ecosystem-group: dependencies
+
 
   - package-ecosystem: "composer"
     directory: "/.scenarios.lock/php8.2"
-    schedule:
-      interval: "weekly"
-    groups:
-      composer_packages:
-        patterns:
-          - "*"
+    patterns: ["*"]
+    multi-ecosystem-group: dependencies
