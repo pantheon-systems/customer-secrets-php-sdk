@@ -72,3 +72,9 @@ Then, you will be able to use your secrets through the SDK.
 ## Restrictions
 This SDK will only read secrets with scope `web`. Secrets get cached in the server for 15 minutes so you should wait (at most) that time if you modified your site secrets.
 
+## Rollback
+
+- **When:** a release breaks consumers (sites reading secrets through the SDK, or the Drupal `pantheon_secrets` module).
+- **Recover:** revert the change and merge; CI publishes the next patch version to Packagist within a minute, and consumers pick it up with `composer update` (or pin the last good version). Never move a tag. Steps: [DEPLOYMENT.md#rollback](DEPLOYMENT.md#rollback).
+- **Verify:** Packagist lists the new version and affected consumers run it.
+- **Who:** `@pantheon-systems/developer-experience`, `#ask-hosting` (not paged).
